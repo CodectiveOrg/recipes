@@ -1,0 +1,11 @@
+.error {
+  display: grid;
+  place-content: center;
+  place-items: center;
+
+  min-block-size: 100dvh;
+
+  h1 {
+    font-weight: 100;
+  }
+}

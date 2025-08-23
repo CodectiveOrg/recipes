@@ -1,0 +1,11 @@
+.not-found {
+  display: grid;
+  place-content: center;
+  place-items: center;
+
+  block-size: 100%;
+
+  h1 {
+    font-weight: 100;
+  }
+}

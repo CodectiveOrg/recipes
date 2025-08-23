@@ -3,14 +3,24 @@ import { createRoot } from "react-dom/client";
 
 import { BrowserRouter } from "react-router";
 
+import { ErrorBoundary } from "react-error-boundary";
+
+import ErrorPage from "@/pages/error/error.page.tsx";
+
+import QueryProvider from "@/providers/query.provider.tsx";
+
 import Routing from "./routing.tsx";
 
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routing />
-    </BrowserRouter>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
+      <BrowserRouter>
+        <QueryProvider>
+          <Routing />
+        </QueryProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </StrictMode>,
 );
