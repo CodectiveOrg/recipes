@@ -4,6 +4,7 @@ import GuestOnlyGuard from "@/guards/guest-only.guard.tsx";
 import LoggedInOnlyGuard from "@/guards/logged-in-only.guard.tsx";
 
 import HelloPage from "@/pages/hello/hello.page.tsx";
+import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
 
 import HomePage from "./pages/home/home.page.tsx";
 
@@ -15,6 +16,7 @@ export default function Routing() {
         <Route path="hello" element={<HelloPage />} />
       </Route>
       <Route index element={<HomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
