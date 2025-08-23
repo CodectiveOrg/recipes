@@ -1,12 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import AppComponent from "./app.component.tsx";
+import { BrowserRouter } from "react-router";
+
+import Routing from "./routing.tsx";
 
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppComponent />
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   </StrictMode>,
 );
