@@ -8,17 +8,19 @@
 }
 
 .button {
-  position: relative;
+  background: none;
+  color: var(--color-orange);
 
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
+  position: relative;
   overflow: hidden;
 
-  color: var(--color-orange);
-  background: none;
+  padding: 0.5rem 1rem;
+
   border: none;
+  border-radius: 3px;
 
   transition: 250ms;
+
   cursor: pointer;
 
   &.medium {
@@ -31,30 +33,36 @@
 
   &:disabled {
     opacity: 0.6;
+
     cursor: not-allowed;
     pointer-events: none;
   }
 
   &:active::before {
     content: "";
+
+    background: var(--color-orange-active);
+
     position: absolute;
     top: -80%;
     left: 10%;
+    z-index: 1;
+
     width: 80%;
     height: 250%;
-    background: var(--color-orange-active);
+
     border-radius: 100%;
-    z-index: 1;
+
     pointer-events: none;
   }
 
   &.contained {
+    background: var(--color-orange);
+    color: rgb(255 255 255);
+
     position: relative;
 
-    background: var(--color-orange);
     border: none;
-
-    color: rgb(255 255 255);
 
     &:hover {
       background-color: rgb(249 115 22);
@@ -72,27 +80,26 @@
 
   &.outlined {
     background: transparent;
-
-    border: 2px solid var(--color-orange);
-
     color: var(--color-orange);
 
     z-index: 0;
+
+    border: 2px solid var(--color-orange);
 
     &:hover {
       background-color: var(--color-orange-hover);
     }
 
     &:disabled {
-      border-color: var(--color-disabled-bg);
-      color: var(--color-disabled-text);
       background: none;
+      color: var(--color-disabled-text);
+
+      border-color: var(--color-disabled-bg);
     }
   }
 
   &.text {
     background: none;
-
     color: var(--color-orange);
 
     &:hover {
@@ -104,8 +111,8 @@
     }
 
     &:disabled {
-      color: var(--color-disabled-text);
       background: none;
+      color: var(--color-disabled-text);
     }
   }
 }
