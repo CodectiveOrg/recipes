@@ -1,8 +1,4 @@
-import {
-  type ComponentPropsWithRef,
-  type ReactNode,
-  useId,
-} from "react";
+import { type ComponentPropsWithRef, type ReactNode, useId } from "react";
 
 import clsx from "clsx";
 
@@ -31,12 +27,7 @@ export default function TextInputComponent({
   return (
     <div className={clsx(styles.input, className)}>
       <label htmlFor={id}>{label}</label>
-      <input
-        id={id}
-        ref={ref}
-        placeholder={placeholder}
-        {...otherProps}
-      />
+      <input id={id} ref={ref} placeholder={placeholder} {...otherProps} />
       {error && <p>{errorText}</p>}
     </div>
   );
