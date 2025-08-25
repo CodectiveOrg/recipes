@@ -1,5 +1,4 @@
 import {
-  type ComponentProps,
   type ComponentPropsWithRef,
   type ReactNode,
   useId,
