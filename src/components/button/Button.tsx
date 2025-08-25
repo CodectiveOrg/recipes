@@ -9,16 +9,21 @@ type Props = React.DetailedHTMLProps<
   HTMLButtonElement
 > & {
   className?: string;
-  color?: string;
+  variant?: "contained" | "outlined" | "text";
+  size?: "medium" | "large";
 };
 export default function Button({
   className,
-  color = "",
+  variant = "text",
+  size = "large",
   children,
   ...otherProps
 }: Props): ReactNode {
   return (
-    <button className={clsx(styles.button, className)} {...otherProps}>
+    <button
+      className={clsx(styles.button, styles[variant], styles[size], className)}
+      {...otherProps}
+    >
       {children}
     </button>
   );
