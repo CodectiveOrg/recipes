@@ -6,15 +6,15 @@
   font-weight: 400;
 
   input {
-    padding: 0.5rem;
-
     background-color: hsl(0deg 0% 100% / 100%);
+
+    block-size: 2.5rem;
+    inline-size: 10rem;
+
+    padding: 0.5rem;
 
     border: 1px solid hsl(210deg 14% 83% / 100%);
     border-radius: 0.25rem;
-
-    inline-size: 10rem;
-    block-size: 2.5rem;
 
     line-height: 1.5rem;
 
@@ -29,9 +29,9 @@
     &:disabled {
       color: hsl(210deg 7% 56% / 100%);
 
-      border-color: hsl(210deg 14% 83% / 100%);
-
       background-color: hsl(210deg 17% 95% / 100%);
+
+      border-color: hsl(210deg 14% 83% / 100%);
     }
 
     &:hover {
@@ -43,9 +43,9 @@
     }
 
     + p {
-      font-size: 0.75rem;
-
       color: hsl(350deg 80% 50% / 100%);
+
+      font-size: 0.75rem;
 
       padding-inline-start: 0.5rem;
     }
