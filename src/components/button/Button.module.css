@@ -8,13 +8,16 @@
 }
 
 .button {
-  padding: 0.5rem 1rem;
   position: relative;
+
+  padding: 0.5rem 1rem;
   border-radius: 3px;
   overflow: hidden;
+
   color: var(--color-orange);
   background: none;
   border: none;
+
   transition: 250ms;
   cursor: pointer;
 
@@ -47,8 +50,10 @@
 
   &.contained {
     position: relative;
+
     background: var(--color-orange);
     border: none;
+
     color: rgb(255 255 255);
 
     &:hover {
@@ -67,8 +72,11 @@
 
   &.outlined {
     background: transparent;
+
     border: 2px solid var(--color-orange);
+
     color: var(--color-orange);
+
     z-index: 0;
 
     &:hover {
@@ -84,6 +92,7 @@
 
   &.text {
     background: none;
+
     color: var(--color-orange);
 
     &:hover {
