@@ -1,109 +1,100 @@
+:root {
+  --color-orange: #fd7a22;
+  --color-orange-hover: rgba(253, 122, 34, 0.08);
+  --color-orange-active: rgba(242, 207, 184, 0.37);
+  --color-orange-active-bg: rgba(255, 145, 77);
+  --color-disabled-bg: #b5b5b5;
+  --color-disabled-text: #4b4a4a;
+}
+
 .button {
   padding: 0.5rem 1rem;
-
-  border: none;
   border-radius: 3px;
-
   position: relative;
-
   overflow: hidden;
-
   cursor: pointer;
-
-  &.contained {
-    background-color: orangered;
-    color: white;
-
-    &:hover {
-      background-color: #f97316;
-
-      transition-duration: 250ms;
-    }
-
-    &:active::before {
-      content: "";
-      position: absolute;
-      top: -83%;
-      left: 8%;
-      width: 80%;
-      height: 270%;
-      background-color: rgba(255, 255, 255, 0.4);
-      border-radius: 100%;
-      transition-duration: 250ms;
-    }
-
-    &:disabled {
-      background-color: rgb(204, 200, 200);
-      color: rgb(131, 130, 130);
-    }
-  }
-
-  &.outlined {
-    background-color: #f5e9e1;
-    color: orangered;
-
-    border: 2px solid orangered;
-
-    &:hover {
-      background-color: #f5e9e1;
-
-      transition-duration: 250ms;
-    }
-
-    &:active::before {
-      content: "";
-      position: absolute;
-      top: -83%;
-      left: 8%;
-      width: 80%;
-      height: 270%;
-      background-color: rgba(255, 255, 255, 0.4);
-      border-radius: 100%;
-      transition-duration: 250ms;
-      z-index: 0;
-    }
-
-    &:disabled {
-      background-color: inherit;
-      color: rgb(185, 180, 180);
-
-      border-color: rgb(185, 180, 180);
-    }
-  }
-
-  &.text {
-    background-color: #f5e9e1;
-    color: orangered;
-
-    &:hover {
-      background-color: #f5e9e1;
-
-      transition-duration: 250ms;
-    }
-
-    &:active::before {
-      content: "";
-      position: absolute;
-      top: -83%;
-      left: 8%;
-      width: 80%;
-      height: 270%;
-      background-color: rgba(255, 255, 255, 0.4);
-      border-radius: 100%;
-      transition-duration: 250ms;
-    }
-
-    &:disabled {
-      background-color: inherit;
-      color: rgb(185, 180, 180);
-    }
-  }
+  background: none;
+  border: none;
+  color: orangered;
+  transition: 250ms;
 
   &.medium {
     inline-size: 6rem;
   }
-
   &.large {
     inline-size: 12rem;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &:active::before {
+    content: "";
+    position: absolute;
+    top: -80%;
+    left: 10%;
+    width: 80%;
+    height: 250%;
+    background: var(--color-orange-active);
+    border-radius: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &.contained {
+    background: var(--color-orange);
+    color: #fff;
+    border: none;
+
+    &:hover {
+      background-color: #f97316;
+    }
+
+    &:active {
+      background: var(--color-orange-active-bg);
+    }
+
+    &:disabled {
+      background-color: var(--color-disabled-bg);
+      color: var(--color-disabled-text);
+    }
+  }
+
+  &.outlined {
+    background: transparent;
+    color: var(--color-orange);
+    border: 2px solid var(--color-orange);
+    z-index: 0;
+
+    &:hover {
+      background-color: var(--color-orange-hover);
+    }
+
+    &:disabled {
+      border-color: var(--color-disabled-bg);
+      color: var(--color-disabled-text);
+      background: none;
+    }
+  }
+
+  &.text {
+    background: none;
+    color: var(--color-orange);
+
+    &:hover {
+      background-color: var(--color-orange-hover);
+    }
+
+    &:active {
+      background: rgba(253, 122, 34, 0.16);
+    }
+
+    &:disabled {
+      color: var(--color-disabled-text);
+      background: none;
+    }
   }
 }

@@ -14,8 +14,8 @@ type Props = React.DetailedHTMLProps<
 };
 export default function Button({
   className,
-  variant = "text",
-  size = "large",
+  variant = "contained",
+  size = "medium",
   children,
   ...otherProps
 }: Props): ReactNode {
