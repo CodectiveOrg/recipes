@@ -1,56 +1,76 @@
 :root {
-  --color-orange: #fd7a22;
-  --color-orange-hover: rgba(253, 122, 34, 0.08);
-  --color-orange-active: rgba(242, 207, 184, 0.37);
-  --color-orange-active-bg: rgba(255, 145, 77);
-  --color-disabled-bg: #b5b5b5;
-  --color-disabled-text: #4b4a4a;
+  --color-orange: rgb(253 122 34 / 100%);
+  --color-orange-hover: rgb(253 122 34 / 8%);
+  --color-orange-active: rgb(242 207 184 / 37%);
+  --color-orange-active-bg: rgb(255 145 77 / 100%);
+  --color-disabled-bg: rgb(181 181 181);
+  --color-disabled-text: rgb(75 74 74);
 }
 
 .button {
   padding: 0.5rem 1rem;
+
   border-radius: 3px;
+
   position: relative;
+
   overflow: hidden;
-  cursor: pointer;
+
+  color: var(--color-orange);
+
   background: none;
+
   border: none;
-  color: orangered;
+
+  cursor: pointer;
+
   transition: 250ms;
 
   &.medium {
     inline-size: 6rem;
   }
+
   &.large {
     inline-size: 12rem;
   }
 
   &:disabled {
     cursor: not-allowed;
+
     opacity: 0.6;
+
     pointer-events: none;
   }
 
   &:active::before {
     content: "";
+
     position: absolute;
+
     top: -80%;
+
     left: 10%;
+
     width: 80%;
+
     height: 250%;
+
     background: var(--color-orange-active);
+
     border-radius: 100%;
+
     z-index: 1;
-    pointer-events: none;
   }
 
   &.contained {
     background: var(--color-orange);
-    color: #fff;
+
     border: none;
 
+    color: rgb(255 255 255);
+
     &:hover {
-      background-color: #f97316;
+      background-color: rgb(249 115 22);
     }
 
     &:active {
@@ -59,14 +79,18 @@
 
     &:disabled {
       background-color: var(--color-disabled-bg);
+
       color: var(--color-disabled-text);
     }
   }
 
   &.outlined {
     background: transparent;
-    color: var(--color-orange);
+
     border: 2px solid var(--color-orange);
+
+    color: var(--color-orange);
+
     z-index: 0;
 
     &:hover {
@@ -75,13 +99,16 @@
 
     &:disabled {
       border-color: var(--color-disabled-bg);
+
       color: var(--color-disabled-text);
+
       background: none;
     }
   }
 
   &.text {
     background: none;
+
     color: var(--color-orange);
 
     &:hover {
@@ -89,11 +116,12 @@
     }
 
     &:active {
-      background: rgba(253, 122, 34, 0.16);
+      background: rgb(253 122 34 / 16%);
     }
 
     &:disabled {
       color: var(--color-disabled-text);
+
       background: none;
     }
   }
