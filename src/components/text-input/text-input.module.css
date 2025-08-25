@@ -8,9 +8,9 @@
   input {
     padding: 0.5rem;
 
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: hsl(0deg 0% 100% / 100%);
 
-    border: 1px solid hsla(210, 14%, 83%, 1);
+    border: 1px solid hsl(210deg 14% 83% / 100%);
     border-radius: 0.25rem;
 
     inline-size: 10rem;
@@ -23,29 +23,29 @@
     }
 
     &.error {
-      border-color: hsla(350, 80%, 50%, 1);
+      border-color: hsl(350deg 80% 50% / 100%);
     }
 
     &:disabled {
-      color: hsla(210, 7%, 56%, 1);
+      color: hsl(210deg 7% 56% / 100%);
 
-      border-color: hsla(210, 14%, 83%, 1);
+      border-color: hsl(210deg 14% 83% / 100%);
 
-      background-color: hsla(210, 17%, 95%, 1);
+      background-color: hsl(210deg 17% 95% / 100%);
     }
 
     &:hover {
-      border-color: hsla(210, 9%, 31%, 1);
+      border-color: hsl(210deg 9% 31% / 100%);
     }
 
     &:focus {
-      border: 2px solid hsla(0, 0%, 0%, 1);
+      border: 2px solid hsl(0deg 0% 0% / 100%);
     }
 
     + p {
       font-size: 0.75rem;
-      
-      color: hsla(350, 80%, 50%, 1);
+
+      color: hsl(350deg 80% 50% / 100%);
 
       padding-inline-start: 0.5rem;
     }
