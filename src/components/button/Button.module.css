@@ -15,8 +15,8 @@
   color: var(--color-orange);
   background: none;
   border: none;
-  cursor: pointer;
   transition: 250ms;
+  cursor: pointer;
 
   &.medium {
     inline-size: 6rem;
