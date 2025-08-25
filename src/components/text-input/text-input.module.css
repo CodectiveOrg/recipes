@@ -1,0 +1,54 @@
+.input {
+  display: grid;
+  gap: 0.5rem;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  input {
+    padding: 0.5rem;
+
+    background-color: hsla(0, 0%, 100%, 1);
+
+    border: 1px solid hsla(210, 14%, 83%, 1);
+    border-radius: 0.25rem;
+
+    inline-size: 10rem;
+    block-size: 2.5rem;
+
+    line-height: 1.5rem;
+
+    &.large {
+      inline-size: 16rem;
+    }
+
+    &.error {
+      border-color: hsla(350, 80%, 50%, 1);
+    }
+
+    &:disabled {
+      color: hsla(210, 7%, 56%, 1);
+
+      border-color: hsla(210, 14%, 83%, 1);
+
+      background-color: hsla(210, 17%, 95%, 1);
+    }
+
+    &:hover {
+      border-color: hsla(210, 9%, 31%, 1);
+    }
+
+    &:focus {
+      border: 2px solid hsla(0, 0%, 0%, 1);
+    }
+
+    + p {
+      font-size: 0.75rem;
+      font-weight: 400;
+
+      color: hsla(350, 80%, 50%, 1);
+
+      padding-inline-start: 0.5rem;
+    }
+  }
+}
