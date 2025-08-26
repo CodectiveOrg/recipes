@@ -1,10 +1,10 @@
 :root {
-  --color-orange: rgb(253 122 34 / 100%);
-  --color-orange-hover: rgb(253 122 34 / 8%);
-  --color-orange-active: rgb(242 207 184 / 37%);
-  --color-orange-active-bg: rgb(255 145 77 / 100%);
-  --color-disabled-bg: rgb(181 181 181);
-  --color-disabled-text: rgb(75 74 74);
+  --color-orange: hsl(24deg 98% 56%);
+  --color-orange-hover: hsl(24deg 98% 56% / 8%);
+  --color-orange-active: hsl(24deg 69% 84% / 37%);
+  --color-orange-active-bg: hsl(23deg 100% 65%);
+  --color-disabled-bg: hsl(0deg 0% 71%);
+  --color-disabled-text: hsl(0deg 1% 29%);
 }
 
 .button {
@@ -17,18 +17,14 @@
   padding: 0.5rem 1rem;
 
   border: none;
-  border-radius: 3px;
+  border-radius: 2px;
 
   transition: 250ms;
 
   cursor: pointer;
 
-  &.medium {
-    inline-size: 6rem;
-  }
-
-  &.large {
-    inline-size: 12rem;
+  &.fullwidth {
+    inline-size: 100%;
   }
 
   &:disabled {

@@ -7,13 +7,13 @@ import styles from "./button.module.css";
 type Props = ComponentProps<"button"> & {
   className?: string;
   variant?: "contained" | "outlined" | "text";
-  fullWidth?: boolean;
+  fullwidth?: boolean;
 };
 
 export default function ButtonComponent({
   className,
   variant = "contained",
-  fullWidth = false,
+  fullwidth = false,
   children,
   ...otherProps
 }: Props): ReactNode {
@@ -22,7 +22,7 @@ export default function ButtonComponent({
       className={clsx(
         styles.button,
         styles[variant],
-        fullWidth && styles.fullWidth,
+        fullwidth && styles.fullwidth,
         className,
       )}
       {...otherProps}
