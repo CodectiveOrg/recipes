@@ -1,8 +1,8 @@
 import {
   type ButtonHTMLAttributes,
   type ComponentProps,
-  type JSX,
   type MouseEvent,
+  type ReactNode,
   useRef,
   useState,
 } from "react";
@@ -28,7 +28,7 @@ export default function ButtonComponent({
   fullwidth = false,
   children,
   ...otherProps
-}: Props): JSX.Element {
+}: Props): ReactNode {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
@@ -54,7 +54,6 @@ export default function ButtonComponent({
         height: diameter + "px",
         left: left + "px",
         top: top + "px",
-        position: "absolute",
       },
     };
 
@@ -62,7 +61,7 @@ export default function ButtonComponent({
 
     setTimeout(() => {
       setRipples([]);
-    }, 1500);
+    }, 600);
   };
 
   return (
