@@ -1,10 +1,14 @@
 :root {
-  --color-orange: hsl(24deg 98% 56%);
-  --color-orange-hover: hsl(24deg 98% 56% / 8%);
-  --color-orange-active: hsl(24deg 69% 84% / 37%);
-  --color-orange-active-bg: hsl(23deg 100% 65%);
-  --color-disabled-bg: hsl(0deg 0% 71%);
-  --color-disabled-text: hsl(0deg 1% 29%);
+  --color-orange: hsl(21deg 90% 54% / 100%);
+  --color-text: hsl(0deg 0% 100% / 100%);
+  --color-orange-contained-hover: hsl(21deg 90% 54% / 80%);
+  --color-orange-hover: hsl(21deg 90% 54% / 8%);
+
+  /* --color-ripple: hsla(0, 0%, 100%, 0.24); */
+  --color-ripple: hsl(0deg 88% 50% / 46.6%);
+  --color-orange-border: hsl(21deg 90% 54% / 80%);
+  --color-disabled-bg: hsl(0deg 0% 75% / 100%);
+  --color-disabled-text: hsl(0deg 0% 52% / 100%);
 }
 
 .button {
@@ -19,6 +23,11 @@
   border: none;
   border-radius: 2px;
 
+  font-size: 16px;
+  font-weight: 600;
+
+  line-height: 24px;
+
   transition: 250ms;
 
   cursor: pointer;
@@ -28,44 +37,17 @@
   }
 
   &:disabled {
-    opacity: 0.6;
-
     cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  &:active::before {
-    content: "";
-
-    background: var(--color-orange-active);
-
-    position: absolute;
-    top: -80%;
-    left: 10%;
-    z-index: 1;
-
-    width: 80%;
-    height: 250%;
-
-    border-radius: 100%;
-
-    pointer-events: none;
   }
 
   &.contained {
     background: var(--color-orange);
-    color: rgb(255 255 255);
-
-    position: relative;
+    color: var(--color-text);
 
     border: none;
 
     &:hover {
-      background-color: rgb(249 115 22);
-    }
-
-    &:active {
-      background: var(--color-orange-active-bg);
+      background-color: var(--color-orange-contained-hover);
     }
 
     &:disabled {
@@ -77,8 +59,6 @@
   &.outlined {
     background: transparent;
     color: var(--color-orange);
-
-    z-index: 0;
 
     border: 2px solid var(--color-orange);
 
@@ -102,13 +82,31 @@
       background-color: var(--color-orange-hover);
     }
 
-    &:active {
-      background: rgb(253 122 34 / 16%);
-    }
-
     &:disabled {
       background: none;
       color: var(--color-disabled-text);
+    }
+  }
+
+  span.ripple {
+    background-color: var(--color-ripple);
+
+    display: block;
+    position: absolute;
+    z-index: 10;
+
+    border-radius: 50%;
+
+    transform: scale(0);
+
+    animation: ripple 1500ms linear;
+  }
+
+  @keyframes ripple {
+    to {
+      opacity: 0;
+
+      transform: scale(4);
     }
   }
 }
