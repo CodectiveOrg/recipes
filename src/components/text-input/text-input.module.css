@@ -15,7 +15,8 @@
     block-size: 2.5rem;
     inline-size: 100%;
 
-    padding: 0.5rem;
+    /* Note: We decrement padding by 1px to account for border-width. */
+    padding: calc(0.5rem - 1px);
 
     border: 1px solid hsl(210deg 14% 83% / 100%);
     border-radius: 0.25rem;
@@ -29,7 +30,8 @@
     }
 
     &:focus {
-      border: 2px solid hsl(0deg 0% 0% / 100%);
+      outline: 2px solid hsl(0deg 0% 0% / 100%);
+      outline-offset: -1px;
     }
 
     &:disabled {
