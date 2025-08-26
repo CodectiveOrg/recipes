@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, type ReactNode, useId } from "react";
+import { type ComponentPropsWithRef, type ReactNode } from "react";
 
 import clsx from "clsx";
 
@@ -6,29 +6,31 @@ import styles from "./text-input.module.css";
 
 type Props = ComponentPropsWithRef<"input"> & {
   label: string;
-  size?: "default" | "large";
-  error?: boolean;
-  errorText?: string;
+  fullwidth?: boolean;
+  error?: boolean | string | null;
 };
 
 export default function TextInputComponent({
-  ref,
   label,
-  error = false,
-  errorText = "This is error text",
+  fullwidth = false,
+  error = null,
   className,
   ...otherProps
 }: Props): ReactNode {
-  const fallbackId = useId();
-  const id = otherProps.id || fallbackId;
-
-  const placeholder = otherProps.placeholder || " ";
-
   return (
-    <div className={clsx(styles.input, className)}>
-      <label htmlFor={id}>{label}</label>
-      <input id={id} ref={ref} placeholder={placeholder} {...otherProps} />
-      {error && <p>{errorText}</p>}
-    </div>
+    <label
+      className={clsx(
+        styles["text-input"],
+        fullwidth && styles.fullwidth,
+        error && styles.error,
+        className,
+      )}
+    >
+      <span className={styles.label}>{label}</span>
+      <input {...otherProps} />
+      {error && typeof error === "string" && (
+        <span className={styles.error}>{error}</span>
+      )}
+    </label>
   );
 }

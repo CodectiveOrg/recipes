@@ -1,36 +1,27 @@
-.input {
+.text-input {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.25rem;
+
+  inline-size: 10rem;
 
   font-size: 1rem;
   font-weight: 400;
+
+  line-height: 1.5;
 
   input {
     background-color: hsl(0deg 0% 100% / 100%);
 
     block-size: 2.5rem;
-    inline-size: 10rem;
+    inline-size: 100%;
 
     padding: 0.5rem;
 
     border: 1px solid hsl(210deg 14% 83% / 100%);
     border-radius: 0.25rem;
 
-    line-height: 1.5rem;
-
-    &.large {
-      inline-size: 16rem;
-    }
-
-    &.error {
-      border-color: hsl(350deg 80% 50% / 100%);
-    }
-
-    &:disabled {
-      background-color: hsl(210deg 17% 95% / 100%);
+    &::placeholder {
       color: hsl(210deg 7% 56% / 100%);
-
-      border-color: hsl(210deg 14% 83% / 100%);
     }
 
     &:hover {
@@ -41,12 +32,29 @@
       border: 2px solid hsl(0deg 0% 0% / 100%);
     }
 
-    + p {
-      color: hsl(350deg 80% 50% / 100%);
+    &:disabled {
+      background-color: hsl(210deg 17% 95% / 100%);
+      color: hsl(210deg 7% 56% / 100%);
 
-      padding-inline-start: 0.5rem;
+      border-color: hsl(210deg 14% 83% / 100%);
+    }
+  }
 
-      font-size: 0.75rem;
+  &.fullwidth {
+    inline-size: 100%;
+  }
+
+  .error {
+    color: hsl(350deg 80% 50% / 100%);
+
+    padding-inline-start: 0.5rem;
+
+    font-size: 0.75rem;
+  }
+
+  &.error {
+    input {
+      border-color: hsl(350deg 80% 50% / 100%);
     }
   }
 }
