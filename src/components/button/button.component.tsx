@@ -44,8 +44,8 @@ export default function ButtonComponent({
     const diameter = Math.max(rect.width, rect.height);
     const radius = diameter / 2;
 
-    let left = event.clientX - rect.left - radius;
-    let top = event.clientY - rect.top - radius;
+    const left = event.clientX - rect.left - radius;
+    const top = event.clientY - rect.top - radius;
 
     const newRipple: Ripple = {
       key: Date.now(),
