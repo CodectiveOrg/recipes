@@ -1,12 +1,15 @@
 :root {
   --color-orange: hsl(21deg 90% 54% / 100%);
   --color-text: hsl(0deg 0% 100% / 100%);
+  --color-orange-border-hover-ouline-button: hsl(21deg 90% 54% / 80%);
   --color-orange-contained-hover: hsl(21deg 90% 54% / 80%);
-  --color-orange-hover: hsl(21deg 90% 54% / 8%);
-  --color-ripple: hsl(0deg 0% 100% / 24%);
   --color-orange-border: hsl(21deg 90% 54% / 80%);
+  --color-orange-hover: hsl(21deg 90% 54% / 8%);
   --color-disabled-bg: hsl(0deg 0% 75% / 100%);
   --color-disabled-text: hsl(0deg 0% 52% / 100%);
+  --color-disabled-outline: hsl(0deg 0% 75% / 100%);
+  --color-disable-text-button: hsl(0deg 0% 71% / 100%);
+  --color-ripple: hsl(0deg 0% 100% / 40%);
 }
 
 .button {
@@ -24,6 +27,7 @@
   font-size: 16px;
   font-weight: 600;
 
+  letter-spacing: 0%;
   line-height: 24px;
 
   transition: 250ms;
@@ -62,13 +66,15 @@
 
     &:hover {
       background-color: var(--color-orange-hover);
+
+      border-color: var(--color-orange-border-hover-ouline-button);
     }
 
     &:disabled {
       background: none;
-      color: var(--color-disabled-text);
+      color: var(--color-disabled-outline);
 
-      border-color: var(--color-disabled-bg);
+      border-color: var(--color-disabled-outline);
     }
   }
 
@@ -82,7 +88,7 @@
 
     &:disabled {
       background: none;
-      color: var(--color-disabled-text);
+      color: var(--color-disable-text-button);
     }
   }
 
@@ -90,9 +96,9 @@
     background-color: var(--color-ripple);
 
     position: absolute;
-    z-index: 10;
+    z-index: 1;
 
-    border-radius: 50%;
+    border-radius: 999rem;
 
     animation: ripple-animation 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }

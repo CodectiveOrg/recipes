@@ -1,5 +1,5 @@
 import {
-  type ButtonHTMLAttributes,
+  type CSSProperties,
   type ComponentProps,
   type MouseEvent,
   type ReactNode,
@@ -15,11 +15,11 @@ type Props = ComponentProps<"button"> & {
   className?: string;
   variant?: "contained" | "outlined" | "text";
   fullwidth?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+};
 
 type Ripple = {
   key: number;
-  style: React.CSSProperties;
+  style: CSSProperties;
 };
 
 export default function ButtonComponent({
