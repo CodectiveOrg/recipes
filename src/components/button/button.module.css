@@ -91,9 +91,10 @@
   span.ripple {
     background-color: var(--color-ripple);
 
-    display: block;
     position: absolute;
     z-index: 10;
+
+    display: block;
 
     border-radius: 50%;
 
