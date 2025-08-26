@@ -1,10 +1,10 @@
-import { type ComponentPropsWithRef, type ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import clsx from "clsx";
 
 import styles from "./text-input.module.css";
 
-type Props = ComponentPropsWithRef<"input"> & {
+type Props = ComponentProps<"input"> & {
   label: string;
   fullwidth?: boolean;
   error?: boolean | string | null;
