@@ -32,7 +32,9 @@ export default function ButtonComponent({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
-  const createRipple = (event: MouseEvent<HTMLButtonElement>): void => {
+  const handleRippleOnMouseDown = (
+    event: MouseEvent<HTMLButtonElement>,
+  ): void => {
     const button = buttonRef.current;
 
     if (!button) return;
@@ -73,7 +75,7 @@ export default function ButtonComponent({
         className,
       )}
       ref={buttonRef}
-      onMouseDown={createRipple}
+      onMouseDown={handleRippleOnMouseDown}
       {...otherProps}
     >
       {children}
