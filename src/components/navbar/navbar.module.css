@@ -1,0 +1,10 @@
+.navbar {
+  background-color: var(--color-form);
+
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+
+  block-size: 6rem;
+  inline-size: 100%;
+}
