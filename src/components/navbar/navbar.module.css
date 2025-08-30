@@ -1,0 +1,63 @@
+.navbar {
+  --offset: 1.5rem;
+
+  display: grid;
+  grid-template-rows: var(--offset) auto;
+
+  margin-block-start: calc(-1 * var(--offset));
+
+  &::before {
+    content: "";
+
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+
+    background-color: var(--color-white);
+  }
+
+  > ul {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 0.5rem 1rem 1rem;
+
+    > li {
+      a {
+        color: var(--color-text-secondary);
+
+        display: grid;
+        justify-items: center;
+        gap: 0.5rem;
+
+        svg {
+          font-size: 1.5rem;
+        }
+
+        &.active {
+          color: var(--color-primary);
+        }
+
+        .circle {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+
+          display: inline-grid;
+          place-content: center;
+
+          padding: 1rem;
+
+          border-radius: 999rem;
+
+          svg {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
