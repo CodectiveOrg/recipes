@@ -12,6 +12,7 @@ import QueryProvider from "@/providers/query.provider.tsx";
 import Routing from "./routing.tsx";
 
 import "./index.css";
+import "./styles/colors.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
