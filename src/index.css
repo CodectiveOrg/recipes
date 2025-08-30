@@ -8,6 +8,10 @@
 }
 
 html {
+  color-scheme: light;
+  caret-color: var(--color-primary);
+  accent-color: var(--color-primary);
+
   font-family: Inter, sans-serif;
 }
 
@@ -23,4 +27,16 @@ output,
 option,
 optgroup {
   font: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--color-white);
 }
