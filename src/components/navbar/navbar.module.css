@@ -1,91 +1,74 @@
-.navbar-wrapper {
-  background-color: var(--color-form);
+.navbar {
+  --offset: 1.5rem;
 
-  position: fixed;
-  inset-block-end: 0;
-  inset-inline-end: 0;
+  position: relative;
+  isolation: isolate;
 
-  inline-size: 100%;
+  display: grid;
+  grid-template-rows: var(--offset) auto;
 
-  .navbar {
-    position: relative;
+  margin-block-start: calc(-1 * var(--offset));
 
-    block-size: 6rem;
-    inline-size: 100%;
+  &::before {
+    content: "";
 
-    padding-block-start: 0.75rem;
-    padding-inline: 1.25rem;
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
 
-    ul {
-      display: flex;
-      justify-content: space-between;
+    background-color: var(--color-white);
 
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  > ul {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 0.5rem 1.25rem 1rem;
+
+    > li {
       a {
         color: var(--color-text-secondary);
 
-        text-decoration: none;
+        display: grid;
+        justify-items: center;
+        gap: 0.5rem;
 
-        li {
-          svg {
-            color: var(--color-text-secondary);
-          }
-        }
-
-        &:nth-child(3) {
-          li {
-            padding: 1rem;
-
-            svg {
-              background-color: var(--color-primary);
-              color: var(--color-whtie);
-
-              position: absolute;
-              inset-block-start: 0;
-              inset-inline-start: 50%;
-
-              block-size: 3.5rem;
-              inline-size: 3.5rem;
-
-              padding: 0.75rem;
-
-              border-radius: 999rem;
-
-              transform: translate(calc(-50% - 0.75rem), -50%);
-            }
-
-            span {
-              padding-block-start: 1rem;
-            }
-          }
+        svg {
+          font-size: 1.5rem;
         }
 
         &.active {
-          li {
-            svg {
-              color: var(--color-primary);
-            }
+          color: var(--color-primary);
+        }
+      }
 
-            span {
-              color: var(--color-primary);
-            }
+      &:nth-child(3) {
+        a {
+          svg {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+
+            block-size: 3.5rem;
+            inline-size: 3.5rem;
+
+            padding: 0.75rem;
+
+            border-radius: 999rem;
+          }
+
+          span {
+            padding-block-start: 1rem;
           }
         }
       }
-    }
-
-    .decorative-bottom-line {
-      background-color: var(--color-text);
-
-      position: absolute;
-      inset-block-end: 0.5rem;
-      inset-inline-start: 50%;
-
-      block-size: 0.25rem;
-      inline-size: min(100% - 2rem, 8.25rem);
-
-      border-radius: 999rem;
-
-      transform: translateX(calc(-50% - 0.75rem));
     }
   }
 }

@@ -4,7 +4,7 @@
 
   block-size: 100dvh;
 
-  > * {
+  > :first-child {
     display: grid;
     grid-template-rows: auto 1fr;
 
@@ -13,9 +13,7 @@
 
       scrollbar-width: thin;
 
-      > :last-child {
-        padding-block-end: 500px;
-      }
+      padding-block-end: 2rem;
     }
   }
 }

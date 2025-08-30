@@ -8,43 +8,62 @@ import { NavLink } from "react-router";
 
 import clsx from "clsx";
 
-import NavbarItemComponent from "@/components/navbar/navbar-item/navbar-item.component.tsx";
+import IconComponent from "@/components/icon/icon.component.tsx";
 
 import styles from "./navbar.module.css";
 
-type NavbarItem = {
-  icon: ReactNode;
-  title: string;
+type Item = {
   href: string;
+  title: string;
+  icon: ReactNode;
 };
 
-type Props = {
-  navbarItems: NavbarItem[];
-} & ComponentProps<HTMLElementType>;
+const items: Item[] = [
+  {
+    href: "/",
+    title: "Home",
+    icon: <IconComponent name="home-angle-2-bold" />,
+  },
+  {
+    href: "/search",
+    title: "Search",
+    icon: <IconComponent name="magnifer-linear" />,
+  },
+  {
+    href: "/add",
+    title: "Add",
+    icon: <IconComponent name="add-circle-broken" />,
+  },
+  {
+    href: "/notification",
+    title: "Notification",
+    icon: <IconComponent name="bell-bold" />,
+  },
+  {
+    href: "/profile",
+    title: "Profile",
+    icon: <IconComponent name="user-bold" />,
+  },
+];
 
-export default function NavbarComponent({
-  navbarItems,
-  className,
-}: Props): ReactNode {
+type Props = ComponentProps<HTMLElementType>;
+
+export default function NavbarComponent({ className }: Props): ReactNode {
   return (
-    <div className={styles["navbar-wrapper"]}>
-      <nav className={clsx(styles.navbar, className)}>
-        <span className={styles["decorative-bottom-line"]}></span>
-        <ul>
-          {navbarItems.map((navItem) => (
+    <nav className={clsx(styles.navbar, className)}>
+      <ul>
+        {items.map((item) => (
+          <li key={item.title}>
             <NavLink
-              to={navItem.href}
-              className={({ isActive }) => clsx(isActive && styles.active)}
+              className={({ isActive }) => clsx("s", isActive && styles.active)}
+              to={item.href}
             >
-              <NavbarItemComponent
-                icon={navItem.icon}
-                title={navItem.title}
-                key={navItem.title}
-              />
+              {item.icon}
+              {item.title}
             </NavLink>
-          ))}
-        </ul>
-      </nav>
-    </div>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

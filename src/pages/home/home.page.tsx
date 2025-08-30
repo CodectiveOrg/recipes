@@ -3,50 +3,15 @@ import type { ReactNode } from "react";
 import { Link } from "react-router";
 
 import IconComponent from "@/components/icon/icon.component.tsx";
-import NavbarComponent from "@/components/navbar/navbar.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
-
-type NavItem = {
-  icon: ReactNode;
-  title: string;
-  href: string;
-};
-const navItems: NavItem[] = [
-  {
-    icon: <IconComponent name="home-angle-2-bold" />,
-    title: "Home",
-    href: "/",
-  },
-  {
-    icon: <IconComponent name="magnifer-linear" />,
-    title: "Search",
-    href: "/search",
-  },
-  {
-    icon: <IconComponent name="add-circle-broken" />,
-    title: "Add",
-    href: "/add",
-  },
-  {
-    icon: <IconComponent name="bell-bold" />,
-    title: "Notification",
-    href: "/notification",
-  },
-  {
-    icon: <IconComponent name="user-bold" />,
-    title: "Profile",
-    href: "/profile",
-  },
-];
 
 export default function HomePage(): ReactNode {
   return (
     <div className={styles.home}>
       <header>Header</header>
       <main>
-        <NavbarComponent navbarItems={navItems} />
         <TypographyComponent variant="h1">Heading 1</TypographyComponent>
         <TypographyComponent variant="h2">Heading 2</TypographyComponent>
         <TypographyComponent variant="h3">Heading 3</TypographyComponent>
@@ -108,6 +73,21 @@ export default function HomePage(): ReactNode {
         </div>
         <br />
         <Link to="/hello">Call Hello API</Link>
+        <br />
+        <TypographyComponent p variant="p2" style={{ maxInlineSize: "40ch" }}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+          atque autem consectetur dolorem eaque enim ex harum hic id illo labore
+          libero magni, non obcaecati quibusdam sequi similique vitae
+          voluptatem. Corporis est illum, natus porro quidem quos? Accusantium
+          eos fugiat maiores nobis perferendis voluptatibus? A aperiam delectus,
+          ea eum fuga harum illum, iste odit optio, sint unde vel voluptas
+          voluptatibus. Accusantium consequuntur delectus et nostrum, officia
+          sit unde! Ab aspernatur beatae consequuntur corporis delectus dicta
+          distinctio dolore dolores eligendi enim exercitationem ipsam magni
+          nesciunt nisi nobis omnis, praesentium provident quasi quo quos
+          repellendus saepe tempore ullam velit voluptatibus. Dolorum,
+          praesentium!
+        </TypographyComponent>
       </main>
     </div>
   );
