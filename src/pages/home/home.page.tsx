@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { Link } from "react-router";
 
+import IconComponent from "@/components/icon/icon.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
@@ -56,6 +57,18 @@ export default function HomePage(): ReactNode {
         architecto doloremque dolorum explicabo, impedit incidunt, ipsa
         reprehenderit saepe tempore tenetur vel.
       </TypographyComponent>
+      <br />
+      <div style={{ fontSize: "2rem" }}>
+        <IconComponent name="home-smile-angle-bold" color="primary" />
+        <IconComponent name="user-linear" color="primary" />
+        <IconComponent name="settings-linear" color="primary" />
+        <IconComponent name="eye-closed-linear" color="text" />
+        <IconComponent
+          name="lock-keyhole-minimalistic-unlocked-linear"
+          color="text-secondary"
+        />
+        <IconComponent name="trash-bin-trash-linear" color="danger" />
+      </div>
       <br />
       <Link to="/hello">Call Hello API</Link>
     </div>
