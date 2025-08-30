@@ -1,58 +1,66 @@
-:root {
-  --color-input-background: hsl(0deg 0% 100% / 100%);
-  --color-input-border: hsl(210deg 14% 83% / 100%);
-  --color-input-placeholder: hsl(210deg 7% 56% / 100%);
-  --color-input-hover-border: hsl(210deg 9% 31% / 100%);
-  --color-input-focus-outline: hsl(0deg 0% 0% / 100%);
-
-  --color-disabled-background: hsl(210deg 17% 95% / 100%);
-  --color-disabled-text: hsl(210deg 7% 56% / 100%);
-  --color-disabled-border: hsl(210deg 14% 83% / 100%);
-
-  --color-error: hsl(350deg 80% 50% / 100%);
-}
-
 .text-input {
-  display: grid;
-  gap: 0.25rem;
+  color: var(--color-text);
 
-  inline-size: 10rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  block-size: 3.5rem;
+  inline-size: 17.5rem;
+
+  padding: 1rem 1.5rem;
+
+  border: 2px solid transparent;
+  border-radius: 2rem;
 
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
 
-  line-height: 1.5;
+  line-height: 1;
+
+  .adornment {
+    svg {
+      block-size: 1.5rem;
+      inline-size: 1.5rem;
+    }
+  }
 
   input {
-    background-color: var(--color-input-background);
-
     block-size: 2.5rem;
     inline-size: 100%;
 
-    /* Note: We decrement padding by 1px to account for border-width. */
-    padding: calc(0.5rem - 1px);
+    border: none;
 
-    border: 1px solid var(--color-input-border);
-    border-radius: 0.25rem;
+    outline: none;
 
     &::placeholder {
-      color: var(--color-input-placeholder);
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &:hover {
+    border-color: var(--color-form);
+
+    .adornment {
+      svg {
+        color: var(--color-form);
+      }
+    }
+  }
+
+  &:focus-within {
+    background-color: var(--color-white);
+
+    border: 2px solid var(--color-primary);
+
+    input {
+      caret-color: var(--color-primary);
     }
 
-    &:hover {
-      border-color: var(--color-input-hover-border);
-    }
-
-    &:focus {
-      outline: 2px solid var(--color-input-focus-outline);
-      outline-offset: -1px;
-    }
-
-    &:disabled {
-      background-color: var(--color-disabled-background);
-      color: var(--color-disabled-text);
-
-      border-color: var(--color-disabled-border);
+    .adornment {
+      svg {
+        color: var(--color-primary);
+      }
     }
   }
 
@@ -60,17 +68,19 @@
     inline-size: 100%;
   }
 
-  .error {
-    color: var(--color-error);
-
-    padding-inline-start: 0.5rem;
-
-    font-size: 0.75rem;
-  }
-
   &.error {
+    background-color: var(--color-white);
+
+    border: 2px solid var(--color-danger);
+
     input {
-      border-color: var(--color-error);
+      caret-color: var(--color-danger);
+    }
+
+    .adornment {
+      svg {
+        color: var(--color-danger);
+      }
     }
   }
 }
