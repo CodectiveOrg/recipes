@@ -1,0 +1,21 @@
+.logged-in {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+
+  block-size: 100dvh;
+
+  > * {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    > main {
+      overflow: auto;
+
+      scrollbar-width: thin;
+
+      > :last-child {
+        padding-block-end: 500px;
+      }
+    }
+  }
+}

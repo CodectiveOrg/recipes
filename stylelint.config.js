@@ -230,7 +230,7 @@ export default {
         groupName: "scroll",
         emptyLineBefore: "always",
         noEmptyLineBetween: true,
-        properties: ["scroll-behavior"],
+        properties: ["scroll-behavior", "scrollbar-color", "scrollbar-width"],
       },
       {
         groupName: "box-model",
