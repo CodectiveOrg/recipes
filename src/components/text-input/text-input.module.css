@@ -4,16 +4,17 @@
 
   display: flex;
   align-items: center;
+  gap: 0.75rem;
 
   font-size: 1rem;
   font-weight: 500;
   line-height: 1;
 
   color: var(--color-text);
-  background-color: var(--color-form);
 
   padding: 1rem 1.5rem;
 
+  border: 2px solid transparent;
   border-radius: 2rem;
 
   .adornment {
@@ -28,7 +29,7 @@
     block-size: 2.5rem;
 
     border: none;
-    
+
     outline: none;
 
     &::placeholder {
@@ -38,6 +39,12 @@
 
   &:hover {
     border-color: var(--color-form);
+
+    .adornment {
+      svg {
+        color: var(--color-form);
+      }
+    }
   }
 
   &:focus-within {
@@ -47,6 +54,12 @@
 
     input {
       caret-color: var(--color-primary);
+    }
+
+    .adornment {
+      svg {
+        color: var(--color-primary);
+      }
     }
   }
 
@@ -61,6 +74,12 @@
 
     input {
       caret-color: var(--color-danger);
+    }
+
+    .adornment {
+      svg {
+        color: var(--color-danger);
+      }
     }
   }
 }
