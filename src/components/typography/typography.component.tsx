@@ -4,17 +4,13 @@ import clsx from "clsx";
 
 import styles from "./typography.module.css";
 
-type VariantType = "h1" | "h2" | "h3" | "p1" | "p2" | "s";
-
-type ColorType = "text" | "text-secondary";
-
 type Props = PropsWithChildren<
   ({ p?: boolean; span?: never } | { p?: never; span?: boolean }) & {
     ellipsis?: boolean;
     className?: string;
     style?: CSSProperties;
-    variant: VariantType;
-    color?: ColorType;
+    variant: "h1" | "h2" | "h3" | "p1" | "p2" | "s";
+    color?: "text" | "text-secondary";
     maxLines?: number;
   }
 >;
@@ -32,12 +28,12 @@ export default function TypographyComponent({
 }: Props): ReactNode {
   const Component = p ? "p" : span ? "span" : "div";
 
-  const maxLinesStyle = {
+  const maxLinesStyle: CSSProperties = {
     display: "-webkit-box",
-    "-webkit-line-clamp": `${maxLines}`,
-    "-webkit-box-orient": "vertical",
+    WebkitLineClamp: `${maxLines}`,
+    WebkitBoxOrient: "vertical",
     overflow: "hidden",
-  } as CSSProperties;
+  };
 
   return (
     <Component
