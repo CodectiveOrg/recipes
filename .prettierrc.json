@@ -6,6 +6,8 @@
     "^react-router(/(.*))?$",
     "^react-error-boundary(/(.*))?$",
     "^@tanstack(/(.*))?$",
+    "^@iconify(/(.*))?$",
+    "^@iconify-json(/(.*))?$",
     "^react-toastify(/(.*))?$",
     "^clsx(/(.*))?$",
     "<THIRD_PARTY_MODULES>",
