@@ -2,20 +2,19 @@
   inline-size: 17.5rem;
   block-size: 3.5rem;
 
-  font-size: 1rem;
-  font-weight: 500;
-
-  line-height: 1;
-
   display: flex;
   align-items: center;
 
-  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+
+  color: var(--color-text);
+  background-color: var(--color-form);
 
   padding: 1rem 1.5rem;
 
-  background-color: var(--color-form);
-  color: var(--color-text);
+  border-radius: 2rem;
 
   .adornment {
     svg {
@@ -25,10 +24,11 @@
   }
 
   input {
-    block-size: 2.5rem;
     inline-size: 100%;
+    block-size: 2.5rem;
 
     border: none;
+    
     outline: none;
 
     &::placeholder {
