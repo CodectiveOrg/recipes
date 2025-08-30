@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router";
 
 import GuestOnlyGuard from "@/guards/guest-only.guard.tsx";
 import LoggedInOnlyGuard from "@/guards/logged-in-only.guard.tsx";
+
 import LoggedInLayout from "@/layouts/logged-in/logged-in.layout.tsx";
 import RootLayout from "@/layouts/root/root.layout.tsx";
 
