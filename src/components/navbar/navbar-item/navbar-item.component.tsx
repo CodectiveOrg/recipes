@@ -9,7 +9,7 @@ type Props = {
 
 export default function NavbarItemComponent({ icon, title }: Props): ReactNode {
   return (
-    <li className={styles.navbar}>
+    <li className={styles["navbar-item"]}>
       {icon}
       <span>{title}</span>
     </li>
