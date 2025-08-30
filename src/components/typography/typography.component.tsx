@@ -15,6 +15,7 @@ type Props = PropsWithChildren<
     style?: CSSProperties;
     variant: VariantType;
     color?: ColorType;
+    maxLines?: number;
   }
 >;
 
@@ -26,9 +27,17 @@ export default function TypographyComponent({
   style,
   variant,
   color = "text",
+  maxLines,
   children,
 }: Props): ReactNode {
   const Component = p ? "p" : span ? "span" : "div";
+
+  const maxLinesStyle = {
+    display: "-webkit-box",
+    "-webkit-line-clamp": `${maxLines}`,
+    "-webkit-box-orient": "vertical",
+    overflow: "hidden",
+  } as CSSProperties;
 
   return (
     <Component
@@ -39,7 +48,10 @@ export default function TypographyComponent({
         styles[color],
         className,
       )}
-      style={style}
+      style={{
+        ...(maxLines ? maxLinesStyle : {}),
+        ...style,
+      }}
     >
       {children}
     </Component>

@@ -35,18 +35,26 @@ export default function HomePage(): ReactNode {
         Small
       </TypographyComponent>
       <br />
-      <TypographyComponent p ellipsis variant="p1">
+      <TypographyComponent
+        p
+        ellipsis
+        variant="p1"
+        style={{ maxInlineSize: "40ch" }}
+      >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium
         architecto doloremque dolorum explicabo, impedit incidunt, ipsa
-        reprehenderit saepe tempore tenetur vel. Ab architecto culpa distinctio
-        dolorum explicabo in ipsa libero neque officiis omnis perferendis quidem
-        sint voluptas voluptate, voluptatibus! Ad adipisci amet architecto
-        asperiores at consectetur consequuntur, dolorem fugiat illo illum in
-        iste laboriosam magni modi molestias nihil nisi nostrum nulla
-        perspiciatis porro quaerat sit vel vitae. Accusamus adipisci aspernatur,
-        eum, facere facilis hic modi nesciunt perferendis quae saepe sunt
-        voluptas! Ab animi at autem dignissimos dolor est ex fuga fugit illum,
-        labore maxime omnis perferendis quaerat reiciendis repudiandae!
+        reprehenderit saepe tempore tenetur vel.
+      </TypographyComponent>
+      <br />
+      <TypographyComponent
+        p
+        variant="p2"
+        maxLines={3}
+        style={{ maxInlineSize: "40ch" }}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium
+        architecto doloremque dolorum explicabo, impedit incidunt, ipsa
+        reprehenderit saepe tempore tenetur vel.
       </TypographyComponent>
       <br />
       <Link to="/hello">Call Hello API</Link>
