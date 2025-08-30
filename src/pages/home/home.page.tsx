@@ -73,6 +73,21 @@ export default function HomePage(): ReactNode {
         </div>
         <br />
         <Link to="/hello">Call Hello API</Link>
+        <br />
+        <TypographyComponent p variant="p2" style={{ maxInlineSize: "40ch" }}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+          atque autem consectetur dolorem eaque enim ex harum hic id illo labore
+          libero magni, non obcaecati quibusdam sequi similique vitae
+          voluptatem. Corporis est illum, natus porro quidem quos? Accusantium
+          eos fugiat maiores nobis perferendis voluptatibus? A aperiam delectus,
+          ea eum fuga harum illum, iste odit optio, sint unde vel voluptas
+          voluptatibus. Accusantium consequuntur delectus et nostrum, officia
+          sit unde! Ab aspernatur beatae consequuntur corporis delectus dicta
+          distinctio dolore dolores eligendi enim exercitationem ipsam magni
+          nesciunt nisi nobis omnis, praesentium provident quasi quo quos
+          repellendus saepe tempore ullam velit voluptatibus. Dolorum,
+          praesentium!
+        </TypographyComponent>
       </main>
     </div>
   );
