@@ -1,0 +1,17 @@
+.icon {
+  &.text {
+    color: var(--color-text);
+  }
+
+  &.text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  &.primary {
+    color: var(--color-primary);
+  }
+
+  &.danger {
+    color: var(--color-danger);
+  }
+}
