@@ -11,13 +11,13 @@ import styles from "./icon.module.css";
 type Props = Omit<IconProps, "icon" | "ssr" | "color"> & {
   collection?: "solar";
   name: string;
-  color?: "text" | "text-secondary" | "primary" | "danger";
+  color?: "inherit" | "text" | "text-secondary" | "primary" | "danger";
 };
 
 export default function IconComponent({
   collection = "solar",
   name,
-  color = "text",
+  color = "inherit",
   inline = true,
   className,
   ...otherProps

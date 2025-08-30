@@ -1,9 +1,6 @@
 .navbar {
   --offset: 1.5rem;
 
-  position: relative;
-  isolation: isolate;
-
   display: grid;
   grid-template-rows: var(--offset) auto;
 
@@ -16,10 +13,6 @@
     grid-row: 2 / -1;
 
     background-color: var(--color-white);
-
-    position: absolute;
-    inset: 0;
-    z-index: -1;
   }
 
   > ul {
@@ -31,7 +24,7 @@
     justify-content: space-between;
     gap: 1rem;
 
-    padding: 0.5rem 1.25rem 1rem;
+    padding: 0.5rem 1rem 1rem;
 
     > li {
       a {
@@ -48,24 +41,20 @@
         &.active {
           color: var(--color-primary);
         }
-      }
 
-      &:nth-child(3) {
-        a {
+        .circle {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+
+          display: inline-grid;
+          place-content: center;
+
+          padding: 1rem;
+
+          border-radius: 999rem;
+
           svg {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-
-            block-size: 3.5rem;
-            inline-size: 3.5rem;
-
-            padding: 0.75rem;
-
-            border-radius: 999rem;
-          }
-
-          span {
-            padding-block-start: 1rem;
+            font-size: 1.5rem;
           }
         }
       }

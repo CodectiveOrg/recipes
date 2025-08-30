@@ -30,9 +30,9 @@ const items: Item[] = [
     icon: <IconComponent name="magnifer-linear" />,
   },
   {
-    href: "/add",
-    title: "Add",
-    icon: <IconComponent name="add-circle-broken" />,
+    href: "/create",
+    title: "Create",
+    icon: <IconComponent name="chef-hat-minimalistic-bold" />,
   },
   {
     href: "/notification",
@@ -52,13 +52,17 @@ export default function NavbarComponent({ className }: Props): ReactNode {
   return (
     <nav className={clsx(styles.navbar, className)}>
       <ul>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li key={item.title}>
             <NavLink
               className={({ isActive }) => clsx("s", isActive && styles.active)}
               to={item.href}
             >
-              {item.icon}
+              {index === 2 ? (
+                <span className={styles.circle}>{item.icon}</span>
+              ) : (
+                item.icon
+              )}
               {item.title}
             </NavLink>
           </li>
