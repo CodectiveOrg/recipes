@@ -28,12 +28,12 @@ export default function TypographyComponent({
 }: Props): ReactNode {
   const Component = p ? "p" : span ? "span" : "div";
 
-  const maxLinesStyle = {
+  const maxLinesStyle: CSSProperties = {
     display: "-webkit-box",
-    "-webkit-line-clamp": `${maxLines}`,
-    "-webkit-box-orient": "vertical",
+    WebkitLineClamp: `${maxLines}`,
+    WebkitBoxOrient: "vertical",
     overflow: "hidden",
-  } as CSSProperties;
+  };
 
   return (
     <Component
