@@ -9,10 +9,14 @@
 }
 
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
   border: none;
   border-radius: 2rem;
 
-  font-size: 15px;
   font-weight: 700;
 
   text-align: center;
@@ -23,31 +27,67 @@
 
   cursor: pointer;
 
-  &.small {
-    block-size: 2.43rem;
-    inline-size: 6.06rem;
+  &.small,
+  &.small-with-icon {
+    block-size: 2.5rem;
 
     font-size: 12px;
+  }
 
-    /* padding: 0.75rem 2rem; ask */
+  &.small {
+    inline-size: 6rem;
+  }
+
+  &.small-with-icon {
+    inline-size: 7.5rem;
+
+    .icon {
+      font-size: 1rem;
+    }
+  }
+
+  &.medium,
+  &.medium-with-icon,
+  &.default,
+  &.default-with-icon {
+    font-size: 15px;
+  }
+
+  &.medium,
+  &.medium-with-icon {
+    block-size: 3rem;
+  }
+
+  &.default,
+  &.default-with-icon {
+    block-size: 3.5rem;
+  }
+
+  &.medium-with-icon,
+  &.default-with-icon {
+    .icon {
+      font-size: 1.5rem;
+    }
   }
 
   &.medium {
-    block-size: 3rem;
-    inline-size: 8rem;
+    inline-size: 7.75rem;
 
-    padding: 0.93rem 2rem;
+    padding: 0.75rem 2rem;
   }
 
-  &.large {
-    block-size: 3.5rem;
-    inline-size: 7.37rem;
-
-    padding: 1.18rem 2rem;
+  &.medium-with-icon {
+    inline-size: 9.75rem;
   }
 
-  &:disabled {
-    cursor: not-allowed;
+  &.default {
+    inline-size: 7.5rem;
+
+    padding: 1rem 2rem;
+  }
+
+  &.default-with-icon {
+    inline-size: 9.5rem;
   }
 
   &.primary {
@@ -107,11 +147,17 @@
     }
   }
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &.disable {
     background: var(--color-form);
     color: var(--color-secondary-text);
 
     border: none;
+
+    cursor: not-allowed;
 
     &.outline {
       background-color: var(--color-white);
