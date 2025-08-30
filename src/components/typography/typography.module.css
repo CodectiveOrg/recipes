@@ -1,0 +1,16 @@
+.typography {
+  &.ellipsis {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &.text {
+    color: var(--color-text);
+  }
+
+  &.text-secondary {
+    color: var(--color-text-secondary);
+  }
+}
