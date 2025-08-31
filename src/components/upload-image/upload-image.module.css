@@ -1,0 +1,76 @@
+:root {
+  --color-border: hsl(216deg 37% 87% / 100%);
+}
+
+.upload-image-component {
+  background-color: var(--color-white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.5rem;
+
+  block-size: 10rem;
+  inline-size: 20.5rem;
+
+  padding: 1rem;
+
+  border: 2px dashed var(--color-border);
+  border-radius: 1rem;
+
+  .upload-image {
+    color: var(--color-text-secondary);
+
+    block-size: 4rem;
+    inline-size: 4rem;
+
+    cursor: pointer;
+
+    img {
+      block-size: inherit;
+      inline-size: inherit;
+
+      padding: 0.5rem 2rem;
+    }
+
+    input {
+      display: none;
+    }
+
+    .icon {
+      block-size: 100%;
+      inline-size: 100%;
+
+      cursor: pointer;
+    }
+  }
+
+  .preview-img {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    block-size: 12rem;
+    inline-size: 85%;
+
+    .remove-img {
+      color: var(--color-danger);
+
+      position: absolute;
+      right: 0;
+
+      block-size: 1.5rem;
+      inline-size: 1.5rem;
+
+      border-radius: 999rem;
+
+      cursor: pointer;
+    }
+  }
+
+  .upload-error {
+    color: var(--color-danger);
+  }
+}
