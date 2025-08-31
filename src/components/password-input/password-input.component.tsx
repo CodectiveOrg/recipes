@@ -16,7 +16,11 @@ export default function PasswordInputComponent({
   const [type, setType] = useState("password");
 
   const onEndAdornmentClickHandler = () => {
-    type === "password" ? setType("text") : setType("password");
+    if (type === "password") {
+      setType("text");
+    } else {
+      setType("password");
+    }
   };
 
   return (
