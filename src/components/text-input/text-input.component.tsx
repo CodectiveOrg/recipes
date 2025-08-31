@@ -8,7 +8,7 @@ type Props = ComponentProps<"input"> & {
   state?: "idle" | "success" | "error";
   startAdornment?: ReactNode;
   endAdornment?: ReactNode;
-  onEndAornmentClick?: () => void
+  onEndAdornmentClick?: () => void
 };
 
 export default function TextInputComponent({
@@ -16,7 +16,7 @@ export default function TextInputComponent({
   state = "idle",
   startAdornment,
   endAdornment,
-  onEndAornmentClick,
+  onEndAdornmentClick,
   ...otherProps
 }: Props): ReactNode {
   return (
@@ -25,7 +25,7 @@ export default function TextInputComponent({
         <span className={styles.adornment}>{startAdornment}</span>
       )}
       <input {...otherProps} />
-      {endAdornment && <span className={styles.adornment} onClick={onEndAornmentClick}>{endAdornment}</span>}
+      {endAdornment && <span className={styles.adornment} onClick={onEndAdornmentClick}>{endAdornment}</span>}
     </label>
   );
 }
