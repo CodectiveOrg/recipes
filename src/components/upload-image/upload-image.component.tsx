@@ -7,18 +7,16 @@ import styles from "./upload-image.module.css";
 
 type Props = {
   name: string;
-  onFileChange?: (file: File | null) => void;
 };
 
-export default function UploadImageComponent({
-  name,
-  onFileChange,
-}: Props): ReactNode {
+export default function UploadImageComponent({ name }: Props): ReactNode {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleInputFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleInputFileChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ): void => {
     setError(null);
     const files = event.target.files;
     if (files && files.length > 0) {
@@ -27,7 +25,7 @@ export default function UploadImageComponent({
       if (!selectedFile.type.startsWith("image/")) {
         setError("It is only possible to upload a photo file.");
         setFile(null);
-        onFileChange && onFileChange(null);
+
         return;
       }
 
@@ -35,24 +33,22 @@ export default function UploadImageComponent({
       if (selectedFile.size > maxBytes) {
         setError("The file size should not exceed 12Mb.");
         setFile(null);
-        onFileChange && onFileChange(null);
+
         return;
       }
       setFile(selectedFile);
-      onFileChange && onFileChange(selectedFile);
     }
   };
 
-  const removeFile = () => {
+  const removeFile = (): void => {
     setFile(null);
     setError(null);
     if (inputRef.current) {
       inputRef.current.value = "";
     }
-    onFileChange && onFileChange(null);
   };
 
-  const onIconClick = () => {
+  const onIconClick = (): void => {
     if (inputRef.current) {
       inputRef.current.click();
     }
