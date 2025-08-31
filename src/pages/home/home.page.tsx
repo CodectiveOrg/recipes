@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { Link } from "react-router";
 
+import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
@@ -73,6 +74,13 @@ export default function HomePage(): ReactNode {
         </div>
         <br />
         <Link to="/hello">Call Hello API</Link>
+        <br />
+        <div>
+          <ButtonComponent>
+            <IconComponent name="widget-linear" />
+            Button
+          </ButtonComponent>
+        </div>
         <br />
         <TypographyComponent p variant="p2" style={{ maxInlineSize: "40ch" }}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
