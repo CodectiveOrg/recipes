@@ -15,8 +15,6 @@
   letter-spacing: 0.5px;
   line-height: 1.125rem;
 
-  transition: 250ms;
-
   cursor: pointer;
 
   svg {
