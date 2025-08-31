@@ -16,9 +16,10 @@ export default function PasswordInputComponent({
   return (
     <TextInputComponent
       className={clsx(styles["password-input"], className)}
+      type="password"
       startAdornment={<IconComponent name="lock-keyhole-minimalistic-bold" />}
-      endAdornment={<IconComponent name="eye-linear" />}
       placeholder="Password"
+      endAdornment={<IconComponent name="eye-linear" />}
       {...otherProps}
     />
   );
