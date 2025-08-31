@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactNode } from "react";
+import { type ComponentProps, type ReactNode, useState } from "react";
 
 import clsx from "clsx";
 
@@ -13,13 +13,20 @@ export default function PasswordInputComponent({
   className,
   ...otherProps
 }: Props): ReactNode {
+  const [type, setType] = useState("password");
+
+  const onEndAdornmentClickHandler = () => {
+    type === "password" ? setType("text") : setType("password");
+  };
+
   return (
     <TextInputComponent
       className={clsx(styles["password-input"], className)}
-      type="password"
+      type={type}
       startAdornment={<IconComponent name="lock-keyhole-minimalistic-bold" />}
       placeholder="Password"
       endAdornment={<IconComponent name="eye-linear" />}
+      onEndAdornmentClick={onEndAdornmentClickHandler}
       {...otherProps}
     />
   );
