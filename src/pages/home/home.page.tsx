@@ -1,15 +1,22 @@
-import type { ReactNode } from "react";
+import { type CSSProperties, type ReactNode, useState } from "react";
 
 import { Link } from "react-router";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
+import RangeInputComponent from "@/components/range-input/range-input.component";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
 
 export default function HomePage(): ReactNode {
+  const [rangeValue, setRangeValue] = useState(45);
+  const percentage = ((rangeValue - 10) / (60 - 10)) * 100;
+
+  const handleInputRange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setRangeValue(Number(e.target.value));
+  };
   return (
     <div className={styles.home}>
       <header>Header</header>
@@ -61,6 +68,16 @@ export default function HomePage(): ReactNode {
             startAdornment={<IconComponent name="user-linear" />}
             endAdornment={<IconComponent name="shield-warning-linear" />}
             placeholder="Placeholder"
+          />
+          <br />
+          <RangeInputComponent
+            type="range"
+            min={10}
+            max={60}
+            value={rangeValue}
+            onChange={handleInputRange}
+            label="Cooking Duration"
+            style={{ "--fill-percentage": `${percentage}%` } as CSSProperties}
           />
         </div>
         <br />
