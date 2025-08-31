@@ -1,174 +1,123 @@
-:root {
-  --color-primary: hsl(151deg 74% 46% / 100%);
-  --color-secondary: hsl(0deg 100% 70% / 100%);
-  --color-form: hsl(220deg 16% 96% / 100%);
-  --color-white: hsl(0deg 0% 100% / 100%);
-  --color-main-text: hsl(220deg 34% 27% / 100%);
-  --color-secondary-text: hsl(229deg 21% 69% / 100%);
-  --color-border-outline: hsl(216deg 37% 87% / 100%);
-}
-
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 
-  border: none;
-  border-radius: 2rem;
+  block-size: max-content;
 
+  border: none;
+  border-radius: 999rem;
+
+  font-size: 0.9375rem;
   font-weight: 700;
 
-  text-align: center;
-  letter-spacing: 0.7%;
-  line-height: 100%;
+  letter-spacing: 0.5px;
+  line-height: 1.125rem;
 
   transition: 250ms;
 
   cursor: pointer;
 
-  &.small,
-  &.small-with-icon {
-    block-size: 2.5rem;
-
-    font-size: 12px;
+  svg {
+    font-size: 1.5rem;
   }
 
-  &.small {
-    inline-size: 6rem;
-  }
+  &.solid {
+    &.primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
 
-  &.small-with-icon {
-    inline-size: 7.5rem;
+    &.secondary {
+      background-color: var(--color-form);
+      color: var(--color-text);
+    }
 
-    .icon {
-      font-size: 1rem;
+    &.danger {
+      background-color: var(--color-danger);
+      color: var(--color-white);
+    }
+
+    &:disabled {
+      background-color: var(--color-form);
+      color: var(--color-text-secondary);
     }
   }
 
-  &.medium,
-  &.medium-with-icon,
-  &.default,
-  &.default-with-icon {
-    font-size: 15px;
-  }
+  &.outlined {
+    border: 2px solid currentcolor;
 
-  &.medium,
-  &.medium-with-icon {
-    block-size: 3rem;
-  }
-
-  &.default,
-  &.default-with-icon {
-    block-size: 3.5rem;
-  }
-
-  &.medium-with-icon,
-  &.default-with-icon {
-    .icon {
-      font-size: 1.5rem;
+    &.primary {
+      background-color: var(--color-white);
+      color: var(--color-primary);
     }
+
+    &.secondary {
+      background-color: var(--color-white);
+      color: var(--color-text);
+
+      border-color: var(--color-outline);
+    }
+
+    &.danger {
+      background-color: var(--color-white);
+      color: var(--color-danger);
+    }
+
+    &:disabled {
+      background-color: var(--color-white);
+      color: var(--color-text-secondary);
+
+      border-color: var(--color-outline);
+    }
+  }
+
+  &.text {
+    background-color: transparent;
+
+    &.primary {
+      color: var(--color-primary);
+    }
+
+    &.secondary {
+      color: var(--color-text);
+    }
+
+    &.danger {
+      color: var(--color-danger);
+    }
+
+    &:disabled {
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &.large {
+    padding: 1rem 2rem;
+
+    line-height: 1.5rem;
   }
 
   &.medium {
-    inline-size: 7.75rem;
-
     padding: 0.75rem 2rem;
+
+    line-height: 1.5rem;
   }
 
-  &.medium-with-icon {
-    inline-size: 9.75rem;
-  }
+  &.small {
+    padding: 0.75rem 2rem;
 
-  &.default {
-    inline-size: 7.5rem;
+    font-size: 0.75rem;
 
-    padding: 1rem 2rem;
-  }
+    line-height: 1rem;
 
-  &.default-with-icon {
-    inline-size: 9.5rem;
-  }
-
-  &.primary {
-    background: var(--color-primary);
-    color: var(--color-white);
-
-    border: none;
-
-    &.outline {
-      background-color: var(--color-primary-contained-hover);
-      color: var(--color-primary);
-
-      border: 2px solid var(--color-primary);
-    }
-
-    &.text {
-      background-color: transparent;
-      color: var(--color-primary);
-    }
-  }
-
-  &.destructive {
-    background: var(--color-secondary);
-    color: var(--color-white);
-
-    border: none;
-
-    &.outline {
-      background-color: var(--color-white);
-      color: var(--color-secondary);
-
-      border: 2px solid var(--color-secondary);
-    }
-
-    &.text {
-      background-color: transparent;
-      color: var(--color-secondary);
-    }
-  }
-
-  &.secondary {
-    background: var(--color-form);
-    color: var(--color-main-text);
-
-    border: none;
-
-    &.outline {
-      background-color: var(--color-white);
-      color: var(--color-main-text);
-
-      border: 2px solid var(--color-border-outline);
-    }
-
-    &.text {
-      background-color: transparent;
-      color: var(--color-main-text);
+    svg {
+      font-size: 1rem;
     }
   }
 
   &:disabled {
     cursor: not-allowed;
-  }
-
-  &.disable {
-    background: var(--color-form);
-    color: var(--color-secondary-text);
-
-    border: none;
-
-    cursor: not-allowed;
-
-    &.outline {
-      background-color: var(--color-white);
-      color: var(--color-secondary-text);
-
-      border: 2px solid var(--color-border-outline);
-    }
-
-    &.text {
-      background-color: transparent;
-      color: var(--color-secondary-text);
-    }
   }
 }

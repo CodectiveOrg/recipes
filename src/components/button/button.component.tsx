@@ -2,32 +2,19 @@ import { type ComponentProps, type ReactNode } from "react";
 
 import clsx from "clsx";
 
-import IconComponent from "../icon/icon.component";
-
 import styles from "./button.module.css";
 
 type Props = ComponentProps<"button"> & {
-  className?: string;
-  color?: "primary" | "secondary" | "destructive" | "disable";
-  variant?: "fill" | "outline" | "text";
-  size?:
-    | "default"
-    | "medium"
-    | "small"
-    | "default-with-icon"
-    | "medium-with-icon"
-    | "small-with-icon";
-  withIcon?: boolean;
-  iconName?: string;
+  variant?: "solid" | "outlined" | "text";
+  color?: "primary" | "secondary" | "danger";
+  size?: "large" | "medium" | "small";
 };
 
 export default function ButtonComponent({
   className,
-  variant = "fill",
+  variant = "solid",
   color = "primary",
-  size = "default",
-  withIcon = false,
-  iconName = "",
+  size = "large",
   children,
   ...otherProps
 }: Props): ReactNode {
@@ -42,7 +29,6 @@ export default function ButtonComponent({
       )}
       {...otherProps}
     >
-      {withIcon && <IconComponent name={iconName} className={styles["icon"]} />}
       {children}
     </button>
   );

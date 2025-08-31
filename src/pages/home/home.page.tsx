@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
+import IconComponent from "@/components/icon/icon.component.tsx";
 
 import styles from "./home.module.css";
 
@@ -9,111 +10,26 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
-        <ButtonComponent color="secondary">Button</ButtonComponent>
-        <ButtonComponent color="secondary" size="medium">
-          Button
-        </ButtonComponent>
-        <ButtonComponent color="secondary" size="small">
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          size="default-with-icon"
-          withIcon
-          iconName="square-academic-cap-2-bold"
-        >
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          withIcon
-          iconName="square-academic-cap-2-bold"
-          size="medium-with-icon"
-        >
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          withIcon
-          iconName="square-academic-cap-2-bold"
-          size="small-with-icon"
-        >
-          Button
-        </ButtonComponent>
-        {/*  */}
-        <ButtonComponent color="secondary" variant="outline">
-          Button
-        </ButtonComponent>
-        <ButtonComponent color="secondary" variant="outline" size="medium">
-          Button
-        </ButtonComponent>
-        <ButtonComponent color="secondary" variant="outline" size="small">
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          size="default-with-icon"
-          withIcon
-          variant="outline"
-          iconName="square-academic-cap-2-bold"
-        >
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          withIcon
-          variant="outline"
-          iconName="square-academic-cap-2-bold"
-          size="medium-with-icon"
-        >
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          withIcon
-          variant="outline"
-          iconName="square-academic-cap-2-bold"
-          size="small-with-icon"
-        >
-          Button
-        </ButtonComponent>
-        {/*  */}
-        <ButtonComponent color="secondary" variant="text">
-          Button
-        </ButtonComponent>
-        <ButtonComponent color="secondary" variant="text" size="medium">
-          Button
-        </ButtonComponent>
-        <ButtonComponent color="secondary" variant="text" size="small">
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          variant="text"
-          withIcon
-          size="default-with-icon"
-          iconName="square-academic-cap-2-bold"
-        >
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          variant="text"
-          withIcon
-          iconName="square-academic-cap-2-bold"
-          size="medium-with-icon"
-        >
-          Button
-        </ButtonComponent>
-        <ButtonComponent
-          color="secondary"
-          variant="text"
-          withIcon
-          iconName="square-academic-cap-2-bold"
-          size="small-with-icon"
-        >
-          Button
-        </ButtonComponent>
+        {["primary", "secondary", "danger", "disabled"].flatMap((color) =>
+          ["solid", "outlined", "text"].flatMap((variant) =>
+            [false, true].flatMap((icon, iconIndex) => (
+              <div key={iconIndex} className={styles.row}>
+                {["large", "medium", "small"].map((size, sizeIndex) => (
+                  <ButtonComponent
+                    key={sizeIndex}
+                    variant={variant}
+                    color={color === "disabled" ? "primary" : color}
+                    size={size}
+                    disabled={color === "disabled"}
+                  >
+                    {icon && <IconComponent name="widget-linear" />}
+                    Button
+                  </ButtonComponent>
+                ))}
+              </div>
+            )),
+          ),
+        )}
       </main>
     </div>
   );

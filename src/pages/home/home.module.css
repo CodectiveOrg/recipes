@@ -1,11 +1,12 @@
 .home {
   main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: end;
-    justify-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
-    padding: 1rem;
+    .row {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+    }
   }
 }
