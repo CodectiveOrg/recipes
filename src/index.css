@@ -9,7 +9,6 @@
 
 html {
   color-scheme: light;
-  caret-color: var(--color-primary);
   accent-color: var(--color-primary);
 
   font-family: Inter, sans-serif;
@@ -39,4 +38,5 @@ a {
 
 body {
   background-color: var(--color-white);
+  color: var(--color-text);
 }

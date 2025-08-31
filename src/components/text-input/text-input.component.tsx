@@ -5,14 +5,12 @@ import clsx from "clsx";
 import styles from "./text-input.module.css";
 
 type Props = ComponentProps<"input"> & {
-  fullwidth?: boolean;
   error?: boolean;
   startAdornment?: ReactNode;
   endAdornment?: ReactNode;
 };
 
 export default function TextInputComponent({
-  fullwidth = false,
   className,
   error = false,
   startAdornment,
@@ -21,22 +19,13 @@ export default function TextInputComponent({
 }: Props): ReactNode {
   return (
     <label
-      className={clsx(
-        styles["text-input"],
-        error && styles.error,
-        fullwidth && styles.fullwidth,
-        className,
-      )}
+      className={clsx(styles["text-input"], error && styles.error, className)}
     >
       {startAdornment && (
-        <div className={clsx(styles.adornment, styles.start)}>
-          {startAdornment}
-        </div>
+        <span className={styles.adornment}>{startAdornment}</span>
       )}
       <input {...otherProps} />
-      {endAdornment && (
-        <div className={clsx(styles.adornment, styles.end)}>{endAdornment}</div>
-      )}
+      {endAdornment && <span className={styles.adornment}>{endAdornment}</span>}
     </label>
   );
 }

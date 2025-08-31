@@ -4,6 +4,7 @@ import { Link } from "react-router";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
+import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
@@ -38,6 +39,21 @@ export default function HomePage(): ReactNode {
         <TypographyComponent variant="s" color="text-secondary">
           Small
         </TypographyComponent>
+        <br />
+        <div>
+          <TextInputComponent
+            type="text"
+            startAdornment={<IconComponent name="user-linear" />}
+            placeholder="Placeholder"
+          />
+          <br />
+          <TextInputComponent
+            error
+            type="text"
+            startAdornment={<IconComponent name="user-linear" />}
+            placeholder="Placeholder"
+          />
+        </div>
         <br />
         <TypographyComponent
           p
