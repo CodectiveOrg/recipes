@@ -48,9 +48,18 @@ export default function HomePage(): ReactNode {
           />
           <br />
           <TextInputComponent
-            error
+            state="success"
             type="text"
             startAdornment={<IconComponent name="user-linear" />}
+            endAdornment={<IconComponent name="check-read-linear" />}
+            placeholder="Placeholder"
+          />
+          <br />
+          <TextInputComponent
+            state="error"
+            type="text"
+            startAdornment={<IconComponent name="user-linear" />}
+            endAdornment={<IconComponent name="shield-warning-linear" />}
             placeholder="Placeholder"
           />
         </div>
