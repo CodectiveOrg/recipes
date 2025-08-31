@@ -7,15 +7,18 @@ import TextInputComponent from "@/components/text-input/text-input.component";
 
 import styles from "./password-input.module.css";
 
-type Props = ComponentProps<"input">;
+type Props = ComponentProps<"input"> & {
+  valid?: boolean;
+};
 
 export default function PasswordInputComponent({
   className,
+  valid = false,
   ...otherProps
 }: Props): ReactNode {
   const [type, setType] = useState("password");
 
-  const onEndAdornmentClickHandler = () => {
+  const toggleTypeHandler = () => {
     if (type === "password") {
       setType("text");
     } else {
@@ -29,8 +32,13 @@ export default function PasswordInputComponent({
       type={type}
       startAdornment={<IconComponent name="lock-keyhole-minimalistic-bold" />}
       placeholder="Password"
-      endAdornment={<IconComponent name="eye-linear" />}
-      onEndAdornmentClick={onEndAdornmentClickHandler}
+      endAdornment={
+        valid ? (
+          <IconComponent className={styles.valid} name="check-circle-linear" />
+        ) : (
+          <IconComponent onClick={toggleTypeHandler} name="eye-linear" />
+        )
+      }
       {...otherProps}
     />
   );
