@@ -1,76 +1,60 @@
-:root {
-  --color-input-background: hsl(0deg 0% 100% / 100%);
-  --color-input-border: hsl(210deg 14% 83% / 100%);
-  --color-input-placeholder: hsl(210deg 7% 56% / 100%);
-  --color-input-hover-border: hsl(210deg 9% 31% / 100%);
-  --color-input-focus-outline: hsl(0deg 0% 0% / 100%);
-
-  --color-disabled-background: hsl(210deg 17% 95% / 100%);
-  --color-disabled-text: hsl(210deg 7% 56% / 100%);
-  --color-disabled-border: hsl(210deg 14% 83% / 100%);
-
-  --color-error: hsl(350deg 80% 50% / 100%);
-}
-
 .text-input {
-  display: grid;
-  gap: 0.25rem;
+  --adornment-color: var(--color-text);
+  --border-color: var(--color-outline);
 
-  inline-size: 10rem;
+  background-color: var(--color-white);
+  color: var(--color-text);
 
-  font-size: 1rem;
-  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
-  line-height: 1.5;
+  inline-size: 100%;
+
+  padding: calc(1rem - 1px) 1.5rem;
+
+  border: 1px solid var(--border-color);
+  border-radius: 999rem;
+
+  .adornment {
+    color: var(--adornment-color);
+
+    display: inline-grid;
+
+    font-size: 1.5rem;
+  }
 
   input {
-    background-color: var(--color-input-background);
+    background-color: transparent;
 
-    block-size: 2.5rem;
     inline-size: 100%;
 
-    /* Note: We decrement padding by 1px to account for border-width. */
-    padding: calc(0.5rem - 1px);
+    border: none;
 
-    border: 1px solid var(--color-input-border);
-    border-radius: 0.25rem;
+    outline: none;
+
+    font-size: 0.9375rem;
+    font-weight: 500;
+
+    line-height: 1.5rem;
 
     &::placeholder {
-      color: var(--color-input-placeholder);
-    }
-
-    &:hover {
-      border-color: var(--color-input-hover-border);
-    }
-
-    &:focus {
-      outline: 2px solid var(--color-input-focus-outline);
-      outline-offset: -1px;
-    }
-
-    &:disabled {
-      background-color: var(--color-disabled-background);
-      color: var(--color-disabled-text);
-
-      border-color: var(--color-disabled-border);
+      color: var(--color-text-secondary);
     }
   }
 
-  &.fullwidth {
-    inline-size: 100%;
-  }
-
-  .error {
-    color: var(--color-error);
-
-    padding-inline-start: 0.5rem;
-
-    font-size: 0.75rem;
+  &.success {
+    --adornment-color: var(--color-primary);
+    --border-color: var(--color-primary);
   }
 
   &.error {
-    input {
-      border-color: var(--color-error);
-    }
+    --adornment-color: var(--color-danger);
+    --border-color: var(--color-danger);
+  }
+
+  &:focus-within {
+    outline: 1px solid var(--adornment-color);
+    outline-offset: -2px;
   }
 }
