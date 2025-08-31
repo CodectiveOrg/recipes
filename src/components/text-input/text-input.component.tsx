@@ -23,11 +23,7 @@ export default function TextInputComponent({
         <span className={styles.adornment}>{startAdornment}</span>
       )}
       <input {...otherProps} />
-      {endAdornment && (
-        <span className={styles.adornment}>
-          {endAdornment}
-        </span>
-      )}
+      {endAdornment && <span className={styles.adornment}>{endAdornment}</span>}
     </label>
   );
 }
