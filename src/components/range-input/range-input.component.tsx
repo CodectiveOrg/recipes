@@ -8,12 +8,17 @@ import styles from "./range-input.module.css";
 
 type Props = ComponentProps<"input"> & {
   label: string;
+  minLabel: number;
+  maxLabel: number;
 };
 export default function RangeInputComponent({
   className,
   label,
+  minLabel,
+  maxLabel,
   ...otherProps
 }: Props): ReactNode {
+  const calculateAvg = (maxLabel + minLabel) / 2;
   return (
     <div className={clsx(styles["range-input"], className)}>
       <label className={styles.title} htmlFor={label}>
@@ -27,13 +32,13 @@ export default function RangeInputComponent({
       <div className={styles["range-input-container"]}>
         <div className={styles["range-labels"]}>
           <TypographyComponent variant="h3" className={styles["range-label"]}>
-            &lt;10
+            &lt;{minLabel}
           </TypographyComponent>
           <TypographyComponent variant="h3" className={styles["range-label"]}>
-            35
+            {calculateAvg}
           </TypographyComponent>
           <TypographyComponent variant="h3" className={styles["range-label"]}>
-            &gt;60
+            &gt;{maxLabel}
           </TypographyComponent>
         </div>
         <input className={styles["input-range-slider"]} {...otherProps} />
@@ -41,17 +46,3 @@ export default function RangeInputComponent({
     </div>
   );
 }
-
-/**
- * usage:
- *  <RangeInputComponent
-          type="range"
-          min={10}
-          max={60}
-          value={value}
-          onChange={(e)=>setValue(Number(e.target.value))}
-          label="Cooking Duration"
-          style={{ "--fill-percentage": `${percentage}%` } as CSSProperties}
-        />
-     const percentage = ((value - 10) / (60 - 10)) * 100;
- */
