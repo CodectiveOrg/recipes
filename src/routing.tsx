@@ -8,6 +8,7 @@ import RootLayout from "@/layouts/root/root.layout.tsx";
 
 import HelloPage from "@/pages/hello/hello.page.tsx";
 import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
+import OnboardingPage from "@/pages/onboarding/onboarding.page.tsx";
 
 import HomePage from "./pages/home/home.page.tsx";
 
@@ -22,6 +23,7 @@ export default function Routing() {
           </Route>
           <Route index element={<HomePage />} />
         </Route>
+        <Route path="onboarding" element={<OnboardingPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

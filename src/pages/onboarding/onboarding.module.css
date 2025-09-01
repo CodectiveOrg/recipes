@@ -1,0 +1,17 @@
+.onboarding {
+  padding: 1.5rem;
+
+  main {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+
+    p {
+      max-inline-size: 13.06rem;
+    }
+
+    button {
+      justify-self: normal;
+    }
+  }
+}
