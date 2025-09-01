@@ -1,6 +1,5 @@
 .range-input {
   display: grid;
-  grid-template-rows: 1fr 1fr;
   gap: 0.5rem;
 
   .title {
@@ -11,7 +10,6 @@
 
   .range-input-container {
     display: grid;
-    grid-template-rows: 1fr 1fr;
     gap: 1rem;
 
     .range-labels {
