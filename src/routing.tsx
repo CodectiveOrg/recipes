@@ -9,14 +9,16 @@ import RootLayout from "@/layouts/root/root.layout.tsx";
 import HelloPage from "@/pages/hello/hello.page.tsx";
 import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
 import OnboardingPage from "@/pages/onboarding/onboarding.page.tsx";
-
+import SignInPage from "@/pages/sign-in/sign-in.component.tsx";
 import HomePage from "./pages/home/home.page.tsx";
 
 export default function Routing() {
   return (
     <Routes>
       <Route element={<RootLayout />}>
-        <Route element={<GuestOnlyGuard />}></Route>
+        <Route element={<GuestOnlyGuard />}>
+          <Route path="/sign-in" element={<SignInPage />} />
+        </Route>
         <Route element={<LoggedInLayout />}>
           <Route element={<LoggedInOnlyGuard />}>
             <Route path="hello" element={<HelloPage />} />
