@@ -1,5 +1,5 @@
 :root {
-  --color-icon: hsla(196, 32%, 44%, 1);
+  --color-icon: hsl(196deg 32% 44% / 100%);
 }
 
 .greetings-section {
@@ -9,8 +9,9 @@
     gap: 0.25rem;
 
     svg {
-      font-size: larger;
       color: var(--color-icon);
+
+      font-size: larger;
     }
   }
 }
