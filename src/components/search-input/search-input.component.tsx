@@ -1,32 +1,53 @@
-import { type ComponentProps, type ReactNode, useRef, useState } from "react";
+import {
+  type ComponentProps,
+  type ReactNode,
+  type RefObject,
+  useRef,
+  useState,
+} from "react";
 
 import clsx from "clsx";
 
+import IconButtonComponent from "@/components/icon-button/icon-button.component";
 import IconComponent from "@/components/icon/icon.component";
 import TextInputComponent from "@/components/text-input/text-input.component";
 
 import styles from "./search-input.module.css";
 
-type Props = ComponentProps<"input">;
+type Props = Omit<
+  ComponentProps<typeof TextInputComponent>,
+  "ref" | "type" | "onChange"
+> & {
+  ref?: RefObject<HTMLInputElement | null>;
+  onChange?: () => void;
+};
 
 export default function SearchInputComponent({
+  ref,
   className,
+  onChange,
   ...otherProps
 }: Props): ReactNode {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const localRef = useRef<HTMLInputElement | null>(null);
+  const mergedRef = ref ?? localRef;
 
   const [show, setShow] = useState<boolean>(false);
 
-  const clearHandler = () => {
-    if (!inputRef.current) {
+  const handleCloseButtonClick = () => {
+    if (!mergedRef.current) {
       return;
     }
 
-    inputRef.current.value = "";
+    mergedRef.current.value = "";
+    setShow(false);
   };
 
   const onChangeHandler = () => {
-    if (inputRef.current?.value.length) {
+    if (onChange) {
+      onChange();
+    }
+
+    if (mergedRef.current?.value.length) {
       setShow(true);
     } else {
       setShow(false);
@@ -35,13 +56,15 @@ export default function SearchInputComponent({
 
   return (
     <TextInputComponent
-      ref={inputRef}
+      ref={mergedRef}
       className={clsx(styles["search-input"], className)}
       startAdornment={<IconComponent name="magnifer-linear" />}
-      placeholder="Search"
+      type="text"
       endAdornment={
         show && (
-          <IconComponent onClick={clearHandler} name="close-circle-bold" />
+          <IconButtonComponent onClick={handleCloseButtonClick}>
+            <IconComponent name="close-circle-bold" color="text" />
+          </IconButtonComponent>
         )
       }
       onChange={onChangeHandler}
