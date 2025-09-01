@@ -8,7 +8,7 @@ import TypographyComponent from "../typography/typography.component";
 import styles from "./recipe-card.module.css";
 
 type Props = ComponentProps<"div"> & {
-  recipeInfo: {
+  recipeCard: {
     title: string;
     coverImage: string;
     recipeInfo: {
@@ -19,34 +19,34 @@ type Props = ComponentProps<"div"> & {
   };
 };
 
-export default function RecipeCardComponent({ recipeInfo, className }: Props) {
+export default function RecipeCardComponent({ recipeCard, className }: Props) {
   return (
     <div className={clsx(styles["recipe-card"], className)}>
       <img
-        src={recipeInfo.coverImage}
-        alt={recipeInfo.title}
+        src={recipeCard.coverImage}
+        alt={recipeCard.title}
         className={styles["cover-img"]}
       />
 
       <TypographyComponent variant="h2" className={styles.title}>
-        {recipeInfo.title}
+        {recipeCard.title}
       </TypographyComponent>
 
       <div className={styles["recipe-info"]}>
         <span className={styles.owner}>
           <img
-            src={recipeInfo.recipeInfo.ownerProfile}
+            src={recipeCard.recipeInfo.ownerProfile}
             alt="user-profile"
             className="owner-profile"
           />
           <TypographyComponent variant="s" className={styles["owner-name"]}>
-            {recipeInfo.recipeInfo.owner}
+            {recipeCard.recipeInfo.owner}
           </TypographyComponent>
         </span>
         <span className={styles["cook-time"]}>
           <IconComponent name="clock-circle-bold" />
           <TypographyComponent variant="s">
-            {recipeInfo.recipeInfo.cookTime}
+            {recipeCard.recipeInfo.cookTime}
           </TypographyComponent>
         </span>
       </div>
