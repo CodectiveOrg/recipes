@@ -2,12 +2,25 @@
   background-color: var(--color-white);
 
   inline-size: 100%;
+  min-block-size: 1rem;
+  max-block-size: 7rem;
+
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+  line-height: normal;
+
   resize: vertical;
 
   padding: 1rem;
 
   border: 1px solid var(--color-outline);
   border-radius: 0.5rem;
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
 
   &::placeholder {
     color: var(--color-text-secondary);
