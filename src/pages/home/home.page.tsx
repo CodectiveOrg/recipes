@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 
 import { Link } from "react-router";
 
+import { toast } from "react-toastify";
+
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
@@ -101,7 +103,7 @@ export default function HomePage(): ReactNode {
         <Link to="/hello">Call Hello API</Link>
         <br />
         <div>
-          <ButtonComponent>
+          <ButtonComponent onClick={() => toast("Wow so easy !")}>
             <IconComponent name="widget-linear" />
             Button
           </ButtonComponent>
