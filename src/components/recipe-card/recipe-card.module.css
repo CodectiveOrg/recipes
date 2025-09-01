@@ -1,32 +1,43 @@
 .recipe-card {
-  inline-size: 16.5rem;
-  block-size: 10.75rem;
+  color: var(--color-white);
 
-  border-radius: 1rem;
+  position: relative;
 
   display: grid;
   grid-template-rows: 2fr 1fr 1fr;
 
+  block-size: 10.75rem;
+  inline-size: 16.5rem;
+
   padding: 1rem;
 
-  color: var(--color-white);
+  .cover-img {
+    position: absolute;
+    z-index: -1;
 
-  background-image: url("/assets/images/fried-chicken.jpg");
-  background-size: cover;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+
+    border-radius: 1rem;
+  }
 
   .title {
-    inline-size: 12rem;
-    line-height: 110.00000000000001%;
-    color: var(--color-white);
     grid-row-start: 2;
+
+    color: var(--color-white);
+
+    inline-size: 12rem;
+
+    line-height: 110%;
   }
 
   .recipe-info {
     grid-row-start: 3;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     .owner {
       display: flex;
@@ -34,21 +45,23 @@
       gap: 0.25rem;
 
       img {
-        inline-size: 1.25rem;
         block-size: 1.25rem;
+        inline-size: 1.25rem;
+
         border-radius: 999rem;
       }
 
       > div {
-        padding-top: 0.25rem;
         color: var(--color-white);
+
+        padding-top: 0.25rem;
       }
     }
 
     .cook-time {
       display: flex;
-      gap: 0.25rem;
       align-items: center;
+      gap: 0.25rem;
 
       > div {
         color: var(--color-white);

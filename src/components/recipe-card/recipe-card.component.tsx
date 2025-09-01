@@ -10,7 +10,7 @@ import styles from "./recipe-card.module.css";
 type Props = ComponentProps<"div"> & {
   recipeInfo: {
     title: string;
-    imageFill: string;
+    coverImage: string;
     recipeInfo: {
       owner: string;
       ownerProfile: string;
@@ -22,9 +22,16 @@ type Props = ComponentProps<"div"> & {
 export default function RecipeCardComponent({ recipeInfo, className }: Props) {
   return (
     <div className={clsx(styles["recipe-card"], className)}>
+      <img
+        src={recipeInfo.coverImage}
+        alt={recipeInfo.title}
+        className={styles["cover-img"]}
+      />
+
       <TypographyComponent variant="h2" className={styles.title}>
         {recipeInfo.title}
       </TypographyComponent>
+
       <div className={styles["recipe-info"]}>
         <span className={styles.owner}>
           <img

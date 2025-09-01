@@ -16,7 +16,7 @@ import styles from "./home.module.css";
 
 const recipeCard = {
   title: " Asian white noodle with extra seafood",
-  imageFill: "/assets/images/user-profile.jpg",
+  coverImage: "/assets/images/fried-chicken.jpg",
   recipeInfo: {
     owner: " James Spader",
     ownerProfile: "/assets/images/user-profile.jpg",
