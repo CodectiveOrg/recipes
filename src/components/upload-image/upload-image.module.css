@@ -1,4 +1,4 @@
-.upload-image-component {
+.upload-image {
   background-color: var(--color-white);
 
   display: flex;
@@ -15,7 +15,7 @@
   border: 2px dashed var(--color-outline);
   border-radius: 1rem;
 
-  .upload-image {
+  .image {
     color: var(--color-text-secondary);
 
     block-size: 4rem;
@@ -65,7 +65,7 @@
     }
   }
 
-  .upload-error {
+  .error {
     color: var(--color-danger);
   }
 }

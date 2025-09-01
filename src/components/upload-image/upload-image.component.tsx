@@ -1,141 +1,138 @@
 import {
   type ChangeEvent,
+  type ComponentProps,
   type ReactNode,
-  useEffect,
+  type RefObject,
   useRef,
   useState,
 } from "react";
+
+import clsx from "clsx";
+
+import ButtonComponent from "@/components/button/button.component.tsx";
 
 import IconComponent from "../icon/icon.component";
 import TypographyComponent from "../typography/typography.component";
 
 import styles from "./upload-image.module.css";
 
-type Props = {
-  name: string;
-  file: File | null;
-  handleChangeFile: (file: File | null) => void;
+const MAX_SIZE_MEGABYTE = 12;
+const MAX_SIZE_BYTE = MAX_SIZE_MEGABYTE * 1024 * 1024;
+
+type Props = ComponentProps<"input"> & {
+  ref?: RefObject<HTMLInputElement>;
+  accept?: `image/${string}`;
+  previouslyUploadedPicture?: string;
 };
 
 export default function UploadImageComponent({
-  name,
-  file,
-  handleChangeFile,
+  ref,
+  className,
+  previouslyUploadedPicture,
+  value,
+  onChange,
+  ...otherProps
 }: Props): ReactNode {
-  const [error, setError] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  useEffect(() => {
+  const localRef = useRef<HTMLInputElement | null>(null);
+  const mergedRef = ref ?? localRef;
+
+  const updatePreviewUrl = (file: File | null): void => {
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+
     if (!file) {
       setPreviewUrl(null);
       return;
     }
+
     const objectUrl = URL.createObjectURL(file);
     setPreviewUrl(objectUrl);
+  };
 
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [file]);
-
-  const handleChangeInputFile = (
-    event: ChangeEvent<HTMLInputElement>,
-  ): void => {
-    setError(null);
-    const files = event.target.files;
-    if (files && files.length > 0) {
-      const selectedFile = files[0];
-
-      if (!selectedFile.type.startsWith("image/")) {
-        setError("It is only possible to upload a photo file.");
-        handleChangeFile(null);
-
-        return;
-      }
-
-      const maxBytes = 1.43 * 1024 * 1024;
-      if (selectedFile.size > maxBytes) {
-        setError("The file size should not exceed 12Mb.");
-        handleChangeFile(null);
-
-        return;
-      }
-      handleChangeFile(selectedFile);
+  const validateInput = (e: ChangeEvent<HTMLInputElement>): File | null => {
+    const files = e.target.files;
+    if (!(files && files.length > 0)) {
+      return null;
     }
+
+    const file = files[0];
+
+    if (!file.type.startsWith("image/")) {
+      toast("Please upload a valid image.");
+      return null;
+    }
+
+    if (file.size > MAX_SIZE_BYTE) {
+      toast(`The file size should not exceed ${MAX_SIZE_MEGABYTE}MB.`);
+      return null;
+    }
+
+    return file;
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const file = validateInput(e);
+    if (!file) {
+      e.target.value = "";
+      return;
+    }
+
+    updatePreviewUrl(file);
+    onChange?.(e);
   };
 
   const removeFile = (): void => {
-    handleChangeFile(null);
-    setError(null);
-    if (inputRef.current) {
-      inputRef.current.value = "";
+    if (mergedRef.current) {
+      mergedRef.current.value = "";
     }
   };
 
-  const onIconClick = (): void => {
-    if (inputRef.current) {
-      inputRef.current.value = "";
-      inputRef.current.click();
-    }
-  };
+  const isBlank = !previouslyUploadedPicture && !value;
 
-  return (
-    <div className={styles["upload-image-component"]}>
-      {
-        <div className={styles["upload-image"]}>
-          {(!file || previewUrl) && (
-            <input
-              type="file"
-              name={name}
-              accept="image/*"
-              ref={inputRef}
-              onChange={handleChangeInputFile}
-            />
-          )}
-          {!file && (
-            <IconComponent
-              onClick={onIconClick}
-              name="upload-bold"
-              className={styles["icon"]}
-            />
-          )}
-        </div>
-      }
-
-      {file && (
-        <div className={styles["preview-img"]}>
-          <IconComponent
-            className={styles["remove-img"]}
-            name="close-circle-bold"
-            onClick={removeFile}
-          >
-            حذف فایل
-          </IconComponent>
-          {previewUrl && (
-            <img
-              src={previewUrl}
-              alt="Preview"
-              onClick={onIconClick}
-              style={{ cursor: "pointer" }}
-            />
-          )}
-        </div>
-      )}
-      {error && (
-        <TypographyComponent variant="s" className={styles["upload-error"]}>
-          {error}
+  const blankContent = (
+    <div className={styles.blank}>
+      <IconComponent name="upload-bold" />
+      <div className={styles.hint}>
+        <TypographyComponent variant="p2" color="text">
+          Add Cover Photo
         </TypographyComponent>
-      )}
-
-      {!file && !error && (
-        <>
-          <TypographyComponent variant="p2" color="text">
-            Add Cover Photo
-          </TypographyComponent>
-          <TypographyComponent variant="s" color="text-secondary">
-            up to 12 Mb
-          </TypographyComponent>
-        </>
-      )}
+        <TypographyComponent variant="s" color="text-secondary">
+          up to {MAX_SIZE_MEGABYTE} MB
+        </TypographyComponent>
+      </div>
     </div>
   );
+
+  const previewContent = (
+    <div className={styles.preview}>
+      <img src={previouslyUploadedPicture ?? previewUrl ?? ""} alt="" />
+      <ButtonComponent onClick={removeFile}>
+        <IconComponent name="close-circle-bold" />
+      </ButtonComponent>
+    </div>
+  );
+
+  return (
+    <label className={clsx(styles["upload-image"], className)}>
+      <input
+        ref={mergedRef}
+        type="file"
+        accept="image/*"
+        value={value}
+        onChange={handleInputChange}
+        {...otherProps}
+      />
+      <div className={styles.content}>
+        {isBlank ? blankContent : previewContent}
+      </div>
+    </label>
+  );
+}
+
+function toast(message: string): void {
+  // TODO: Use toaster provider.
+  console.log(message);
 }
