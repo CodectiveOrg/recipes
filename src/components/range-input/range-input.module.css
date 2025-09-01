@@ -1,4 +1,4 @@
-.range-input-component {
+.range-input {
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 0.5rem;

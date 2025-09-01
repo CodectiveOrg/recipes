@@ -15,7 +15,7 @@ export default function RangeInputComponent({
   ...otherProps
 }: Props): ReactNode {
   return (
-    <div className={clsx(styles["range-input-component"], className)}>
+    <div className={clsx(styles["range-input"], className)}>
       <label className={styles.title} htmlFor={label}>
         <TypographyComponent variant="h2" color="text">
           {label}
