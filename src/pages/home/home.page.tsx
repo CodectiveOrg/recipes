@@ -1,4 +1,4 @@
-import { type FormEvent, type ReactNode } from "react";
+import { type FormEvent, type ReactNode, useState } from "react";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import UploadImageComponent from "@/components/upload-image/upload-image.component";
@@ -6,11 +6,14 @@ import UploadImageComponent from "@/components/upload-image/upload-image.compone
 import styles from "./home.module.css";
 
 export default function HomePage(): ReactNode {
+  const [value, setValue] = useState<File | null>(null);
+
+  const handleInputChange = (file: File | null): void => {
+    setValue(file);
+  };
+
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const value = formData.get("cover");
 
     console.log(value);
   };
@@ -20,7 +23,7 @@ export default function HomePage(): ReactNode {
       <header>Header</header>
       <main>
         <form onSubmit={handleFormSubmit}>
-          <UploadImageComponent name="cover" />
+          <UploadImageComponent name="cover" onChange={handleInputChange} />
           <ButtonComponent>Submit</ButtonComponent>
         </form>
       </main>

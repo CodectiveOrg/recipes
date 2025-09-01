@@ -20,11 +20,11 @@ import styles from "./upload-image.module.css";
 const MAX_SIZE_MEGABYTE = 1;
 const MAX_SIZE_BYTE = MAX_SIZE_MEGABYTE * 1024 * 1024;
 
-type Props = ComponentProps<"input"> & {
+type Props = Omit<ComponentProps<"input">, "ref" | "accept" | "onChange"> & {
   ref?: RefObject<HTMLInputElement | null>;
   accept?: `image/${string}`;
   previouslyUploadedPicture?: string;
-  onRemove?: () => unknown;
+  onChange?: (file: File | null) => void;
 };
 
 export default function UploadImageComponent({
@@ -32,7 +32,6 @@ export default function UploadImageComponent({
   className,
   previouslyUploadedPicture,
   onChange,
-  onRemove,
   ...otherProps
 }: Props): ReactNode {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -81,7 +80,7 @@ export default function UploadImageComponent({
     }
 
     updatePreviewUrl(null);
-    onRemove?.();
+    onChange?.(null);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -93,7 +92,7 @@ export default function UploadImageComponent({
     }
 
     updatePreviewUrl(file);
-    onChange?.(e);
+    onChange?.(file);
   };
 
   const handleRemoveButtonClick = (e: MouseEvent<HTMLButtonElement>): void => {
