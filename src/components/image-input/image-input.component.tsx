@@ -8,6 +8,8 @@ import {
   useState,
 } from "react";
 
+import { toast } from "react-toastify";
+
 import clsx from "clsx";
 
 import IconButtonComponent from "@/components/icon-button/icon-button.component.tsx";
@@ -15,7 +17,7 @@ import IconButtonComponent from "@/components/icon-button/icon-button.component.
 import IconComponent from "../icon/icon.component";
 import TypographyComponent from "../typography/typography.component";
 
-import styles from "./upload-image.module.css";
+import styles from "./image-input.module.css";
 
 const MAX_SIZE_MEGABYTE = 1;
 const MAX_SIZE_BYTE = MAX_SIZE_MEGABYTE * 1024 * 1024;
@@ -27,7 +29,7 @@ type Props = Omit<ComponentProps<"input">, "ref" | "accept" | "onChange"> & {
   onChange?: (file: File | null) => void;
 };
 
-export default function UploadImageComponent({
+export default function ImageInputComponent({
   ref,
   className,
   previouslyUploadedPicture,
@@ -62,12 +64,12 @@ export default function UploadImageComponent({
     const file = files[0];
 
     if (!file.type.startsWith("image/")) {
-      toast("Please upload a valid image.");
+      toast.error("Please upload a valid image.");
       return null;
     }
 
     if (file.size > MAX_SIZE_BYTE) {
-      toast(`The file size should not exceed ${MAX_SIZE_MEGABYTE}MB.`);
+      toast.error(`The file size should not exceed ${MAX_SIZE_MEGABYTE}MB.`);
       return null;
     }
 
@@ -135,9 +137,4 @@ export default function UploadImageComponent({
       {isBlank ? blankContent : previewContent}
     </label>
   );
-}
-
-function toast(message: string): void {
-  // TODO: Use toaster provider.
-  console.log(message);
 }
