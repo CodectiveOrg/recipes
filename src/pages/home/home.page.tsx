@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { toast } from "react-toastify";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
+import GreetingsSectionComponent from "@/components/greetings-section/greetings-section.component";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
@@ -18,6 +19,9 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <br />
+        <GreetingsSectionComponent userName="Alena Sabyan" />
+        <br />
         <ImageInputComponent />
         <br />
         <PasswordInputComponent />
