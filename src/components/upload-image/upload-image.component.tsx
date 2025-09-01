@@ -1,6 +1,7 @@
 import {
   type ChangeEvent,
   type ComponentProps,
+  type MouseEvent,
   type ReactNode,
   type RefObject,
   useRef,
@@ -9,28 +10,29 @@ import {
 
 import clsx from "clsx";
 
-import ButtonComponent from "@/components/button/button.component.tsx";
+import IconButtonComponent from "@/components/icon-button/icon-button.component.tsx";
 
 import IconComponent from "../icon/icon.component";
 import TypographyComponent from "../typography/typography.component";
 
 import styles from "./upload-image.module.css";
 
-const MAX_SIZE_MEGABYTE = 12;
+const MAX_SIZE_MEGABYTE = 1;
 const MAX_SIZE_BYTE = MAX_SIZE_MEGABYTE * 1024 * 1024;
 
 type Props = ComponentProps<"input"> & {
   ref?: RefObject<HTMLInputElement>;
   accept?: `image/${string}`;
   previouslyUploadedPicture?: string;
+  onRemove: () => unknown;
 };
 
 export default function UploadImageComponent({
   ref,
   className,
   previouslyUploadedPicture,
-  value,
   onChange,
+  onRemove,
   ...otherProps
 }: Props): ReactNode {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -84,34 +86,37 @@ export default function UploadImageComponent({
     onChange?.(e);
   };
 
-  const removeFile = (): void => {
+  const handleRemoveButtonClick = (e: MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+
     if (mergedRef.current) {
       mergedRef.current.value = "";
     }
+
+    updatePreviewUrl(null);
+    onRemove?.();
   };
 
-  const isBlank = !previouslyUploadedPicture && !value;
+  const isBlank = !previouslyUploadedPicture && !previewUrl;
 
   const blankContent = (
     <div className={styles.blank}>
       <IconComponent name="upload-bold" />
-      <div className={styles.hint}>
-        <TypographyComponent variant="p2" color="text">
-          Add Cover Photo
-        </TypographyComponent>
-        <TypographyComponent variant="s" color="text-secondary">
-          up to {MAX_SIZE_MEGABYTE} MB
-        </TypographyComponent>
-      </div>
+      <TypographyComponent variant="p2" color="text">
+        Add Cover Photo
+      </TypographyComponent>
+      <TypographyComponent variant="s" color="text-secondary">
+        (up to {MAX_SIZE_MEGABYTE} MB)
+      </TypographyComponent>
     </div>
   );
 
   const previewContent = (
     <div className={styles.preview}>
       <img src={previouslyUploadedPicture ?? previewUrl ?? ""} alt="" />
-      <ButtonComponent onClick={removeFile}>
+      <IconButtonComponent onClick={handleRemoveButtonClick}>
         <IconComponent name="close-circle-bold" />
-      </ButtonComponent>
+      </IconButtonComponent>
     </div>
   );
 
@@ -121,13 +126,10 @@ export default function UploadImageComponent({
         ref={mergedRef}
         type="file"
         accept="image/*"
-        value={value}
         onChange={handleInputChange}
         {...otherProps}
       />
-      <div className={styles.content}>
-        {isBlank ? blankContent : previewContent}
-      </div>
+      {isBlank ? blankContent : previewContent}
     </label>
   );
 }
