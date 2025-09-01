@@ -24,7 +24,7 @@ type Props = ComponentProps<"input"> & {
   ref?: RefObject<HTMLInputElement>;
   accept?: `image/${string}`;
   previouslyUploadedPicture?: string;
-  onRemove: () => unknown;
+  onRemove?: () => unknown;
 };
 
 export default function UploadImageComponent({
