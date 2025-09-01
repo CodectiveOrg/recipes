@@ -21,7 +21,7 @@ const MAX_SIZE_MEGABYTE = 1;
 const MAX_SIZE_BYTE = MAX_SIZE_MEGABYTE * 1024 * 1024;
 
 type Props = ComponentProps<"input"> & {
-  ref?: RefObject<HTMLInputElement>;
+  ref?: RefObject<HTMLInputElement | null>;
   accept?: `image/${string}`;
   previouslyUploadedPicture?: string;
   onRemove?: () => unknown;
@@ -75,10 +75,20 @@ export default function UploadImageComponent({
     return file;
   };
 
+  const remove = (): void => {
+    if (mergedRef.current) {
+      mergedRef.current.value = "";
+    }
+
+    updatePreviewUrl(null);
+    onRemove?.();
+  };
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const file = validateInput(e);
+
     if (!file) {
-      e.target.value = "";
+      remove();
       return;
     }
 
@@ -88,13 +98,7 @@ export default function UploadImageComponent({
 
   const handleRemoveButtonClick = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-
-    if (mergedRef.current) {
-      mergedRef.current.value = "";
-    }
-
-    updatePreviewUrl(null);
-    onRemove?.();
+    remove();
   };
 
   const isBlank = !previouslyUploadedPicture && !previewUrl;
