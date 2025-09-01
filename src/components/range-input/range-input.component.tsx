@@ -31,13 +31,13 @@ export default function RangeInputComponent({
       </label>
       <div className={styles["range-input-container"]}>
         <div className={styles["range-labels"]}>
-          <TypographyComponent variant="h3" className={styles["range-label"]}>
+          <TypographyComponent variant="p2" className={styles["range-label"]}>
             &lt;{minLabel}
           </TypographyComponent>
-          <TypographyComponent variant="h3" className={styles["range-label"]}>
+          <TypographyComponent variant="p2" className={styles["range-label"]}>
             {calculateAvg}
           </TypographyComponent>
-          <TypographyComponent variant="h3" className={styles["range-label"]}>
+          <TypographyComponent variant="p2" className={styles["range-label"]}>
             &gt;{maxLabel}
           </TypographyComponent>
         </div>
