@@ -8,6 +8,8 @@ import {
   useState,
 } from "react";
 
+import { toast } from "react-toastify";
+
 import clsx from "clsx";
 
 import IconButtonComponent from "@/components/icon-button/icon-button.component.tsx";
@@ -62,12 +64,12 @@ export default function ImageInputComponent({
     const file = files[0];
 
     if (!file.type.startsWith("image/")) {
-      toast("Please upload a valid image.");
+      toast.error("Please upload a valid image.");
       return null;
     }
 
     if (file.size > MAX_SIZE_BYTE) {
-      toast(`The file size should not exceed ${MAX_SIZE_MEGABYTE}MB.`);
+      toast.error(`The file size should not exceed ${MAX_SIZE_MEGABYTE}MB.`);
       return null;
     }
 
@@ -135,9 +137,4 @@ export default function ImageInputComponent({
       {isBlank ? blankContent : previewContent}
     </label>
   );
-}
-
-function toast(message: string): void {
-  // TODO: Use toaster provider.
-  console.log(message);
 }

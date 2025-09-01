@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
+import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
@@ -16,6 +17,8 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <ImageInputComponent />
+        <br />
         <TypographyComponent variant="h1">Heading 1</TypographyComponent>
         <TypographyComponent variant="h2">Heading 2</TypographyComponent>
         <TypographyComponent variant="h3">Heading 3</TypographyComponent>
