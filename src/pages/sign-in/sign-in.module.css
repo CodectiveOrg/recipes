@@ -1,33 +1,35 @@
 .sign-in {
   padding-inline: 1.5rem;
 
-  .writings {
-    margin-block: 6.68rem 2rem;
+  main {
+    .writings {
+      display: grid;
+      justify-items: center;
+      gap: 0.5rem;
 
-    display: grid;
-    justify-items: center;
-    gap: 0.5rem;
-  }
+      margin-block: 6.68rem 2rem;
+    }
 
-  form {
-    label {
-      &:nth-child(2) {
-        margin-block: 1rem 7.56rem;
+    form {
+      label {
+        &:nth-child(2) {
+          margin-block: 1rem 7.56rem;
+        }
+      }
+
+      button {
+        inline-size: 100%;
       }
     }
 
-    button {
-      inline-size: 100%;
+    .text {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      inline-size: calc(100% - (3.75rem * 2));
+
+      margin: 2rem auto 0;
     }
-  }
-
-  .text {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    inline-size: calc(100% - (3.75rem * 2));
-
-    margin: 2rem auto 0 auto;
   }
 }

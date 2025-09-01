@@ -1,0 +1,54 @@
+.sign-up {
+  padding-inline: 1.5rem;
+
+  main {
+    .writings {
+      display: grid;
+      justify-items: center;
+      gap: 0.5rem;
+
+      margin-block: 0.68rem 2rem;
+    }
+
+    form {
+      label {
+        &:nth-child(2) {
+          margin-block: 1rem 1.5rem;
+        }
+      }
+
+      .rules {
+        display: grid;
+        gap: 1rem;
+
+        .rule {
+          color: var(--color-text-secondary);
+
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          svg {
+            font-size: 1.5rem;
+          }
+
+          &.passed {
+            p {
+              color: var(--color-text);
+            }
+
+            svg {
+              color: var(--color-primary);
+            }
+          }
+        }
+      }
+
+      button {
+        inline-size: 100%;
+
+        margin-block-start: 1.43rem;
+      }
+    }
+  }
+}

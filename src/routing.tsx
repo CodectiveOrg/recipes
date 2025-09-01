@@ -10,6 +10,8 @@ import HelloPage from "@/pages/hello/hello.page.tsx";
 import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
 import OnboardingPage from "@/pages/onboarding/onboarding.page.tsx";
 import SignInPage from "@/pages/sign-in/sign-in.component.tsx";
+import SignUpPage from "@/pages/sign-up/sign-up.component.tsx";
+
 import HomePage from "./pages/home/home.page.tsx";
 
 export default function Routing() {
@@ -18,6 +20,7 @@ export default function Routing() {
       <Route element={<RootLayout />}>
         <Route element={<GuestOnlyGuard />}>
           <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
         </Route>
         <Route element={<LoggedInLayout />}>
           <Route element={<LoggedInOnlyGuard />}>

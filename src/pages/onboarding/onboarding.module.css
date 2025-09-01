@@ -4,9 +4,8 @@
     grid-template-rows: auto 1fr;
 
     img {
-      inline-size: 100%;
       block-size: 100%;
-
+      inline-size: 100%;
       object-fit: cover;
     }
 
@@ -15,9 +14,8 @@
       justify-items: center;
       gap: 1rem;
 
-      padding-inline: 1.5rem;
-
       margin-block: 3rem 4.5rem;
+      padding-inline: 1.5rem;
 
       p {
         max-inline-size: 13.06rem;
@@ -27,8 +25,8 @@
     }
 
     button {
-      margin-inline: 1.5rem;
       margin-block-end: 4.5rem;
+      margin-inline: 1.5rem;
     }
   }
 }

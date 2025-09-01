@@ -1,6 +1,6 @@
 import { type FormEvent, type ReactNode } from "react";
 
-import { Link } from "react-router";
+import clsx from "clsx";
 
 import ButtonComponent from "@/components/button/button.component";
 import IconComponent from "@/components/icon/icon.component";
@@ -8,22 +8,26 @@ import PasswordInputComponent from "@/components/password-input/password-input.c
 import TextInputComponent from "@/components/text-input/text-input.component";
 import TypographyComponent from "@/components/typography/typography.component";
 
-import styles from "./sign-in.module.css";
+import styles from "./sign-up.module.css";
 
-export default function SignInPage(): ReactNode {
+const RULES = ["Atleast 6 characters", "Contains a number"];
+
+export default function SignUpPage(): ReactNode {
   const formSubmitHandler = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
   };
 
+  const isPassed = () => false;
+
   return (
-    <div className={styles["sign-in"]}>
+    <div className={styles["sign-up"]}>
       <header></header>
       <main>
         <div className={styles.writings}>
           <TypographyComponent variant="h1" color="text">
-            Welcome Back!
+            Welcome!
           </TypographyComponent>
           <TypographyComponent p variant="p2" color="text-secondary">
             Please enter your account here
@@ -32,24 +36,35 @@ export default function SignInPage(): ReactNode {
         <form onSubmit={formSubmitHandler}>
           <TextInputComponent
             placeholder="Email or phone number"
+            id="email"
             startAdornment={<IconComponent name="letter-linear" color="text" />}
           />
           <PasswordInputComponent
             placeholder="Password"
+            id="password"
             startAdornment={
               <IconComponent name="lock-keyhole-minimalistic-outline" />
             }
           />
-          <ButtonComponent>Login</ButtonComponent>
+          <div className={styles.rules}>
+            <TypographyComponent p variant="p1">
+              Your Password must contain:
+            </TypographyComponent>
+
+            {RULES.map((rule, index) => (
+              <div
+                key={index}
+                className={clsx(styles.rule, isPassed() ? "passed" : "")}
+              >
+                <IconComponent name="check-circle-bold"></IconComponent>
+                <TypographyComponent p variant="p2">
+                  {rule}
+                </TypographyComponent>
+              </div>
+            ))}
+          </div>
+          <ButtonComponent>Sign Up</ButtonComponent>
         </form>
-        <div className={styles.text}>
-          <TypographyComponent p variant="p2">
-            Don’t have any account?
-          </TypographyComponent>
-          <Link to="/sign-up">
-            <TypographyComponent variant="h3">Sign Up</TypographyComponent>
-          </Link>
-        </div>
       </main>
     </div>
   );
