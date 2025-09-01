@@ -1,0 +1,12 @@
+.icon-button {
+  background-color: transparent;
+
+  display: inline-flex;
+  align-items: center;
+
+  aspect-ratio: 1 / 1;
+
+  border: none;
+
+  cursor: pointer;
+}
