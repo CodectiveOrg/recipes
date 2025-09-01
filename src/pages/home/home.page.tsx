@@ -1,4 +1,4 @@
-import { type FormEvent, type ReactNode, useRef } from "react";
+import { type FormEvent, type ReactNode } from "react";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import UploadImageComponent from "@/components/upload-image/upload-image.component";
@@ -6,12 +6,13 @@ import UploadImageComponent from "@/components/upload-image/upload-image.compone
 import styles from "./home.module.css";
 
 export default function HomePage(): ReactNode {
-  const ref = useRef<HTMLInputElement>(null);
-
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    console.log(ref.current?.value);
+    const formData = new FormData(e.currentTarget);
+    const value = formData.get("cover");
+
+    console.log(value);
   };
 
   return (
@@ -19,7 +20,7 @@ export default function HomePage(): ReactNode {
       <header>Header</header>
       <main>
         <form onSubmit={handleFormSubmit}>
-          <UploadImageComponent ref={ref} />
+          <UploadImageComponent name="cover" />
           <ButtonComponent>Submit</ButtonComponent>
         </form>
       </main>
