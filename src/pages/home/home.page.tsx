@@ -8,16 +8,28 @@ import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
+import RecipeCardComponent from "@/components/recipe-card/recipe-card.component";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
 
+const recipeCard = {
+  title: " Asian white noodle with extra seafood",
+  imageFill: "/assets/images/user-profile.jpg",
+  recipeInfo: {
+    owner: " James Spader",
+    ownerProfile: "/assets/images/user-profile.jpg",
+    cookTime: "20 Min",
+  },
+};
 export default function HomePage(): ReactNode {
   return (
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <RecipeCardComponent recipeInfo={recipeCard} />
+        <br />
         <ImageInputComponent />
         <br />
         <PasswordInputComponent />
