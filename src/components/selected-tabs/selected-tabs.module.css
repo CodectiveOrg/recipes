@@ -1,0 +1,24 @@
+.selected-tabs {
+  .tabs {
+    block-size: 2.25rem;
+
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px;
+
+    cursor: pointer;
+
+    span {
+      flex-grow: 1;
+      text-align: center;
+
+      &.active {
+        border-bottom: 3px solid var(--color-primary);
+      }
+    }
+  }
+
+  .content {
+    padding: 0.5rem 0;
+  }
+}
