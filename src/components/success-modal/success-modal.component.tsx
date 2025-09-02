@@ -1,6 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 
-import ButtonComponent from "@/components/button/button.component";
+import { Link } from "react-router";
+
 import ModalComponent from "@/components/modal/modal.component";
 import TypographyComponent from "@/components/typography/typography.component";
 
@@ -10,7 +11,8 @@ type Props = ComponentProps<typeof ModalComponent> & {
   image?: string;
   title: string;
   text?: string;
-  buttonText?: string;
+  linkText?: string;
+  to?: string;
   onAccept?: () => void;
 };
 
@@ -18,7 +20,8 @@ export default function SuccessModalComponent({
   image,
   title,
   text,
-  buttonText,
+  linkText,
+  to,
   onAccept,
   ...otherProps
 }: Props): ReactNode {
@@ -37,8 +40,10 @@ export default function SuccessModalComponent({
           )}
         </div>
 
-        {buttonText && (
-          <ButtonComponent onClick={onAccept}>{buttonText}</ButtonComponent>
+        {linkText && to && (
+          <Link to={to} onClick={onAccept}>
+            {linkText}
+          </Link>
         )}
       </div>
     </ModalComponent>

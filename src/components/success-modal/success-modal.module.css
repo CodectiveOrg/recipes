@@ -24,7 +24,15 @@
     margin-block-end: 1.5rem;
   }
 
-  button {
+  a {
     inline-size: 100%;
+    text-align: center;
+
+    color: var(--color-white);
+    background-color: var(--color-primary);
+
+    border-radius: 999rem;
+
+    padding-block: 1.1875rem;
   }
 }
