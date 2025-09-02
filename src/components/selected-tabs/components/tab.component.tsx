@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import TypographyComponent from "@/components/typography/typography.component";
 
 type Props = {
@@ -11,7 +13,7 @@ export default function TabComponent({
   selected,
   color,
   onClick,
-}: Props) {
+}: Props): ReactNode {
   return (
     <span className={selected} key={label} onClick={onClick}>
       <TypographyComponent span variant="p2" color={color}>
