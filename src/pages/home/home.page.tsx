@@ -11,9 +11,9 @@ import { toast } from "react-toastify";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
-import RangeInputComponent from "@/components/range-input/range-input.component";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
+import RangeInputComponent from "@/components/range-input/range-input.component";
 import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
