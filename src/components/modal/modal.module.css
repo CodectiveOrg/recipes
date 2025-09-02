@@ -1,0 +1,25 @@
+.modal {
+  background-color: var(--color-white);
+
+  margin: auto;
+
+  border: none;
+  border-radius: 1.5rem;
+
+  &::backdrop {
+    background-color: color-mix(in hsl, hsl(0deg 0 0), transparent 60%);
+  }
+
+  .content {
+    display: grid;
+    gap: 1.5rem;
+
+    padding: 1.5rem;
+
+    border-radius: inherit;
+
+    > header {
+      text-align: center;
+    }
+  }
+}
