@@ -1,9 +1,4 @@
-import {
-  type CSSProperties,
-  type ChangeEvent,
-  type ReactNode,
-  useState,
-} from "react";
+import { type ReactNode, useState } from "react";
 
 import { Link } from "react-router";
 
@@ -21,12 +16,9 @@ import TypographyComponent from "@/components/typography/typography.component.ts
 import styles from "./home.module.css";
 
 export default function HomePage(): ReactNode {
-  const [rangeValue, setRangeValue] = useState(45);
-  const percentage = ((rangeValue - 10) / (60 - 10)) * 100;
+  // const [defaultValue, setDefaultValue] = useState<number>(20);
+  const [value, setValue] = useState<number>(20);
 
-  const handleInputRange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setRangeValue(Number(e.target.value));
-  };
   return (
     <div className={styles.home}>
       <header>Header</header>
@@ -37,17 +29,28 @@ export default function HomePage(): ReactNode {
         <br />
         <SearchInputComponent />
         <br />
+        <ButtonComponent onClick={() => setValue((old) => old - 10)}>
+          Decrement value
+        </ButtonComponent>
+        <ButtonComponent onClick={() => setValue((old) => old + 10)}>
+          Increment value
+        </ButtonComponent>
         <br />
         <RangeInputComponent
-          type="range"
           min={10}
           max={60}
-          minLabel={10}
-          maxLabel={60}
-          value={rangeValue}
-          onChange={handleInputRange}
-          label="Cooking Duration"
-          style={{ "--fill-percentage": `${percentage}%` } as CSSProperties}
+          value={value}
+          onChange={(e) => setValue(+e.currentTarget.value)}
+          label={
+            <>
+              <TypographyComponent variant="h2" color="text">
+                Cooking Duration
+              </TypographyComponent>
+              <TypographyComponent variant="p1" color="text-secondary">
+                (in minutes)
+              </TypographyComponent>
+            </>
+          }
         />
         <br />
         <TypographyComponent variant="h1">Heading 1</TypographyComponent>

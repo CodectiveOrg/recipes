@@ -2,67 +2,70 @@
   display: grid;
   gap: 0.5rem;
 
-  .title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  .label {
   }
 
-  .range-input-container {
-    display: grid;
-    gap: 1rem;
+  .hints {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .range-labels {
-      color: var(--color-primary);
+  input {
+    --track-size: 0.5rem;
+    --thumb-size: 1.5rem;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    --track-background: linear-gradient(
+      90deg,
+      var(--color-primary) 0,
+      var(--color-primary) var(--value),
+      var(--color-form) var(--value)
+    );
 
-      inline-size: 100%;
+    appearance: none;
 
-      .range-label {
-        color: inherit;
-      }
+    background: none;
 
-      .range-label:last-child {
-        color: var(--color-text-secondary);
-      }
-    }
+    inline-size: 100%;
 
-    input[type="range"] {
-      background: var(--color-form);
-      background: linear-gradient(
-        to right,
-        var(--color-primary) 0%,
-        var(--color-primary) var(--fill-percentage),
-        var(--color-form) var(--fill-percentage),
-        var(--color-form) 100%
-      );
+    cursor: pointer;
 
-      height: 0.5rem;
+    &::-webkit-slider-runnable-track {
+      background-image: var(--track-background);
+
+      block-size: var(--track-size);
 
       border-radius: 999rem;
-      appearance: none;
     }
 
-    /* WebKit browsers */
-    input[type="range"]::-webkit-slider-thumb {
-      background-color: var(--color-primary);
+    &::-moz-range-track {
+      background-image: var(--track-background);
 
-      width: 1.5rem;
-      height: 1.5rem;
+      block-size: var(--track-size);
 
       border-radius: 999rem;
-      appearance: none;
     }
 
-    /* Firefox */
-    input[type="range"]::-moz-range-thumb {
+    &::-webkit-slider-thumb {
+      appearance: none;
+
       background-color: var(--color-primary);
 
-      width: 1.5rem;
-      height: 1.5rem;
+      block-size: var(--thumb-size);
+      inline-size: var(--thumb-size);
+
+      margin-block-start: calc((var(--track-size) - var(--thumb-size)) / 2);
+
+      border-radius: 999rem;
+    }
+
+    &::-moz-range-thumb {
+      appearance: none;
+
+      background-color: var(--color-primary);
+
+      block-size: var(--thumb-size);
+      inline-size: var(--thumb-size);
 
       border: none;
       border-radius: 999rem;
