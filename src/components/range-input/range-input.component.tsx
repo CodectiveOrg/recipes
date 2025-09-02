@@ -11,7 +11,7 @@ import {
 
 import clsx from "clsx";
 
-import TypographyComponent from "../typography/typography.component";
+import TypographyComponent from "@/components/typography/typography.component";
 
 import styles from "./range-input.module.css";
 
