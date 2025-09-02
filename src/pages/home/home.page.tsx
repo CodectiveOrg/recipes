@@ -17,8 +17,15 @@ import TypographyComponent from "@/components/typography/typography.component.ts
 
 import styles from "./home.module.css";
 
+const tabList = [
+  { label: "Left", content: <div>Left Content</div> },
+  {
+    label: "Right",
+    content: <div>Right Content</div>,
+  },
+];
+
 export default function HomePage(): ReactNode {
-  // const [defaultValue, setDefaultValue] = useState<number>(20);
   const [value, setValue] = useState<number>(20);
 
   return (
@@ -26,7 +33,7 @@ export default function HomePage(): ReactNode {
       <header>Header</header>
       <main>
         <br />
-        <SelectedTabsComponent />
+        <SelectedTabsComponent tabList={tabList} />
         <br />
         <TextAreaComponent />
         <br />
