@@ -42,7 +42,7 @@ export default function SuccessModalComponent({
 
         {linkText && to && (
           <Link to={to} onClick={onAccept}>
-            {linkText}
+            <TypographyComponent span variant="h3">{linkText}</TypographyComponent>
           </Link>
         )}
       </div>
