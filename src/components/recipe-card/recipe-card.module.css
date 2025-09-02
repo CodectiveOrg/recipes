@@ -9,7 +9,7 @@
   block-size: 10.75rem;
   inline-size: 16.5rem;
 
-  padding: 1rem;
+  padding: 0.75rem;
 
   .cover-img {
     position: absolute;
@@ -51,7 +51,7 @@
         border-radius: 999rem;
       }
 
-      > div {
+      > span {
         color: var(--color-white);
 
         padding-top: 0.25rem;
@@ -63,7 +63,7 @@
       align-items: center;
       gap: 0.25rem;
 
-      > div {
+      > span {
         color: var(--color-white);
       }
     }

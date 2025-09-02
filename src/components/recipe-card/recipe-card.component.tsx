@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import clsx from "clsx";
 
@@ -19,7 +19,10 @@ type Props = ComponentProps<"div"> & {
   };
 };
 
-export default function RecipeCardComponent({ recipeCard, className }: Props) {
+export default function RecipeCardComponent({
+  recipeCard,
+  className,
+}: Props): ReactNode {
   return (
     <div className={clsx(styles["recipe-card"], className)}>
       <img
@@ -39,13 +42,17 @@ export default function RecipeCardComponent({ recipeCard, className }: Props) {
             alt="user-profile"
             className="owner-profile"
           />
-          <TypographyComponent variant="s" className={styles["owner-name"]}>
+          <TypographyComponent
+            span
+            variant="s"
+            className={styles["owner-name"]}
+          >
             {recipeCard.recipeInfo.owner}
           </TypographyComponent>
         </span>
         <span className={styles["cook-time"]}>
           <IconComponent name="clock-circle-bold" />
-          <TypographyComponent variant="s">
+          <TypographyComponent span variant="s">
             {recipeCard.recipeInfo.cookTime}
           </TypographyComponent>
         </span>
