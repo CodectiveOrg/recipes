@@ -1,4 +1,6 @@
 .range-input {
+  --value: 0;
+
   display: grid;
   gap: 0.5rem;
 
@@ -9,8 +11,6 @@
   }
 
   input {
-    --value: 0;
-
     --track-size: 0.5rem;
     --thumb-size: 1.5rem;
 
