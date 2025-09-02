@@ -11,7 +11,6 @@ import PasswordInputComponent from "@/components/password-input/password-input.c
 import RangeInputComponent from "@/components/range-input/range-input.component";
 import RecipeCardComponent from "@/components/recipe-card/recipe-card.component";
 import SearchInputComponent from "@/components/search-input/search-input.component";
-import TextAreaComponent from "@/components/text-area/text-area.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
