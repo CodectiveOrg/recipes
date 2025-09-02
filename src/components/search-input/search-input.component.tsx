@@ -30,7 +30,7 @@ export default function SearchInputComponent({
 
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
-  const handleClearButtonClick = () => {
+  const handleClearButtonClick = (): void => {
     if (!finalRef.current) {
       return;
     }
@@ -39,7 +39,7 @@ export default function SearchInputComponent({
     setIsFilled(false);
   };
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
+  const handleTextInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setIsFilled(!!finalRef.current?.value);
     onChange?.(e);
   };
@@ -58,7 +58,7 @@ export default function SearchInputComponent({
           </IconButtonComponent>
         )
       }
-      onChange={onChangeHandler}
+      onChange={handleTextInputChange}
       {...otherProps}
     />
   );
