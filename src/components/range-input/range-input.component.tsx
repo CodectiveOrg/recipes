@@ -17,11 +17,11 @@ import styles from "./range-input.module.css";
 
 type Props = Omit<ComponentProps<"input">, "ref" | "type"> & {
   ref?: RefObject<HTMLInputElement | null>;
+  label: ReactNode;
   min: number;
   max: number;
   defaultValue?: string | number;
   value?: string | number;
-  label: ReactNode;
 };
 
 export default function RangeInputComponent({
