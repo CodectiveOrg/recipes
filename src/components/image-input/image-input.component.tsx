@@ -13,9 +13,8 @@ import { toast } from "react-toastify";
 import clsx from "clsx";
 
 import IconButtonComponent from "@/components/icon-button/icon-button.component.tsx";
-
-import IconComponent from "../icon/icon.component";
-import TypographyComponent from "../typography/typography.component";
+import IconComponent from "@/components/icon/icon.component";
+import TypographyComponent from "@/components/typography/typography.component";
 
 import styles from "./image-input.module.css";
 
@@ -39,7 +38,7 @@ export default function ImageInputComponent({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const localRef = useRef<HTMLInputElement | null>(null);
-  const mergedRef = ref ?? localRef;
+  const finalRef = ref ?? localRef;
 
   const updatePreviewUrl = (file: File | null): void => {
     if (previewUrl) {
@@ -77,8 +76,8 @@ export default function ImageInputComponent({
   };
 
   const remove = (): void => {
-    if (mergedRef.current) {
-      mergedRef.current.value = "";
+    if (finalRef.current) {
+      finalRef.current.value = "";
     }
 
     updatePreviewUrl(null);
@@ -128,7 +127,7 @@ export default function ImageInputComponent({
   return (
     <label className={clsx(styles["upload-image"], className)}>
       <input
-        ref={mergedRef}
+        ref={finalRef}
         type="file"
         accept="image/*"
         onChange={handleInputChange}

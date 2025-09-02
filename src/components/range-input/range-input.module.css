@@ -1,0 +1,73 @@
+.range-input {
+  --value: 0;
+
+  display: grid;
+  gap: 0.5rem;
+
+  .hints {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  input {
+    --track-size: 0.5rem;
+    --thumb-size: 1.5rem;
+
+    --track-background-image: linear-gradient(
+      90deg,
+      var(--color-primary) 0,
+      var(--color-primary) var(--value),
+      var(--color-form) var(--value)
+    );
+
+    appearance: none;
+
+    background: none;
+
+    inline-size: 100%;
+
+    cursor: pointer;
+
+    &::-webkit-slider-runnable-track {
+      background-image: var(--track-background-image);
+
+      block-size: var(--track-size);
+
+      border-radius: 999rem;
+    }
+
+    &::-moz-range-track {
+      background-image: var(--track-background-image);
+
+      block-size: var(--track-size);
+
+      border-radius: 999rem;
+    }
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+
+      background-color: var(--color-primary);
+
+      block-size: var(--thumb-size);
+      inline-size: var(--thumb-size);
+
+      margin-block-start: calc((var(--track-size) - var(--thumb-size)) / 2);
+
+      border-radius: 999rem;
+    }
+
+    &::-moz-range-thumb {
+      appearance: none;
+
+      background-color: var(--color-primary);
+
+      block-size: var(--thumb-size);
+      inline-size: var(--thumb-size);
+
+      border: none;
+      border-radius: 999rem;
+    }
+  }
+}

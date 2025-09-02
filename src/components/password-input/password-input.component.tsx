@@ -24,7 +24,7 @@ export default function PasswordInputComponent({
 }: Props): ReactNode {
   const [type, setType] = useState<HTMLInputTypeAttribute>("password");
 
-  const handleEyeButtonClick = () => {
+  const handleEyeButtonClick = (): void => {
     setType(type === "password" ? "text" : "password");
   };
 

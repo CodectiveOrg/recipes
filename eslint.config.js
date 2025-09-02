@@ -7,17 +7,23 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config([
   globalIgnores(["dist"]),
+  js.configs.recommended,
+  tseslint.configs.recommended,
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
       reactHooks.configs["recommended-latest"],
       reactRefresh.configs.vite,
     ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+  },
+  {
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/explicit-member-accessibility": "error",
     },
   },
 ]);

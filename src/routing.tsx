@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { Route, Routes } from "react-router";
 
 import GuestOnlyGuard from "@/guards/guest-only.guard.tsx";
@@ -11,7 +13,7 @@ import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
 
 import HomePage from "./pages/home/home.page.tsx";
 
-export default function Routing() {
+export default function Routing(): ReactNode {
   return (
     <Routes>
       <Route element={<RootLayout />}>
