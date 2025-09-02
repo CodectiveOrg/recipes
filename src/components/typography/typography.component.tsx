@@ -10,7 +10,7 @@ type Props = PropsWithChildren<
     className?: string;
     style?: CSSProperties;
     variant: "h1" | "h2" | "h3" | "p1" | "p2" | "s";
-    color?: "text" | "text-secondary";
+    color?: "primary" | "text" | "text-secondary";
     maxLines?: number;
   }
 >;

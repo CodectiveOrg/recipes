@@ -1,19 +1,58 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 
 import { Link } from "react-router";
 
+import { toast } from "react-toastify";
+
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
+import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
+import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
+import RangeInputComponent from "@/components/range-input/range-input.component";
+import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
 
 export default function HomePage(): ReactNode {
+  // const [defaultValue, setDefaultValue] = useState<number>(20);
+  const [value, setValue] = useState<number>(20);
+
   return (
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <ImageInputComponent />
+        <br />
+        <PasswordInputComponent />
+        <br />
+        <SearchInputComponent />
+        <br />
+        <ButtonComponent onClick={() => setValue((old) => old - 10)}>
+          Decrement value
+        </ButtonComponent>
+        <ButtonComponent onClick={() => setValue((old) => old + 10)}>
+          Increment value
+        </ButtonComponent>
+        <br />
+        <RangeInputComponent
+          min={10}
+          max={60}
+          value={value}
+          onChange={(e) => setValue(+e.currentTarget.value)}
+          label={
+            <>
+              <TypographyComponent variant="h2" color="text">
+                Cooking Duration
+              </TypographyComponent>
+              <TypographyComponent variant="p1" color="text-secondary">
+                (in minutes)
+              </TypographyComponent>
+            </>
+          }
+        />
+        <br />
         <TypographyComponent variant="h1">Heading 1</TypographyComponent>
         <TypographyComponent variant="h2">Heading 2</TypographyComponent>
         <TypographyComponent variant="h3">Heading 3</TypographyComponent>
@@ -101,7 +140,7 @@ export default function HomePage(): ReactNode {
         <Link to="/hello">Call Hello API</Link>
         <br />
         <div>
-          <ButtonComponent>
+          <ButtonComponent onClick={() => toast("Wow so easy !")}>
             <IconComponent name="widget-linear" />
             Button
           </ButtonComponent>
