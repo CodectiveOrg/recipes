@@ -1,15 +1,14 @@
 .selected-tabs {
   .tabs {
-    block-size: 2.25rem;
-
     display: flex;
-    justify-content: space-evenly;
-    border-bottom: 2px;
+
+    block-size: 2.25rem;
 
     cursor: pointer;
 
     span {
       flex-grow: 1;
+
       text-align: center;
 
       &.active {
