@@ -8,6 +8,7 @@ import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
+import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
@@ -21,6 +22,8 @@ export default function HomePage(): ReactNode {
         <ImageInputComponent />
         <br />
         <PasswordInputComponent />
+        <br />
+        <SearchInputComponent />
         <br />
         <TypographyComponent variant="h1">Heading 1</TypographyComponent>
         <TypographyComponent variant="h2">Heading 2</TypographyComponent>

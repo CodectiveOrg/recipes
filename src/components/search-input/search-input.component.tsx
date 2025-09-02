@@ -1,4 +1,5 @@
 import {
+  type ChangeEvent,
   type ComponentProps,
   type ReactNode,
   type RefObject,
@@ -14,12 +15,8 @@ import TextInputComponent from "@/components/text-input/text-input.component";
 
 import styles from "./search-input.module.css";
 
-type Props = Omit<
-  ComponentProps<typeof TextInputComponent>,
-  "ref" | "type" | "onChange"
-> & {
+type Props = Omit<ComponentProps<typeof TextInputComponent>, "ref" | "type"> & {
   ref?: RefObject<HTMLInputElement | null>;
-  onChange?: () => void;
 };
 
 export default function SearchInputComponent({
@@ -29,40 +26,34 @@ export default function SearchInputComponent({
   ...otherProps
 }: Props): ReactNode {
   const localRef = useRef<HTMLInputElement | null>(null);
-  const mergedRef = ref ?? localRef;
+  const finalRef = ref ?? localRef;
 
-  const [show, setShow] = useState<boolean>(false);
+  const [isFilled, setIsFilled] = useState<boolean>(false);
 
-  const handleCloseButtonClick = () => {
-    if (!mergedRef.current) {
+  const handleClearButtonClick = () => {
+    if (!finalRef.current) {
       return;
     }
 
-    mergedRef.current.value = "";
-    setShow(false);
+    finalRef.current.value = "";
+    setIsFilled(false);
   };
 
-  const onChangeHandler = () => {
-    if (onChange) {
-      onChange();
-    }
-
-    if (mergedRef.current?.value.length) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
+    setIsFilled(!!finalRef.current?.value);
+    onChange?.(e);
   };
 
   return (
     <TextInputComponent
-      ref={mergedRef}
+      ref={finalRef}
       className={clsx(styles["search-input"], className)}
-      startAdornment={<IconComponent name="magnifer-linear" />}
       type="text"
+      variant="search"
+      startAdornment={<IconComponent name="magnifer-linear" />}
       endAdornment={
-        show && (
-          <IconButtonComponent onClick={handleCloseButtonClick}>
+        isFilled && (
+          <IconButtonComponent onClick={handleClearButtonClick}>
             <IconComponent name="close-circle-bold" color="text" />
           </IconButtonComponent>
         )
