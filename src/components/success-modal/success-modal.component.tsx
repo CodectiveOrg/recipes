@@ -11,8 +11,6 @@ type Props = ComponentProps<typeof ModalComponent> & {
   image?: string;
   title: string;
   text?: string;
-  linkText?: string;
-  to?: string;
   onAccept?: () => void;
 };
 
@@ -20,8 +18,6 @@ export default function SuccessModalComponent({
   image,
   title,
   text,
-  linkText,
-  to,
   onAccept,
   ...otherProps
 }: Props): ReactNode {
@@ -40,13 +36,11 @@ export default function SuccessModalComponent({
           )}
         </div>
 
-        {linkText && to && (
-          <Link to={to} onClick={onAccept}>
-            <TypographyComponent span variant="h3">
-              {linkText}
-            </TypographyComponent>
-          </Link>
-        )}
+        <Link to="/home" onClick={onAccept}>
+          <TypographyComponent span variant="h3">
+            Go to Home
+          </TypographyComponent>
+        </Link>
       </div>
     </ModalComponent>
   );
