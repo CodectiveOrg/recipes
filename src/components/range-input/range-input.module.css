@@ -2,9 +2,6 @@
   display: grid;
   gap: 0.5rem;
 
-  .label {
-  }
-
   .hints {
     display: flex;
     align-items: center;
@@ -12,10 +9,12 @@
   }
 
   input {
+    --value: 0;
+
     --track-size: 0.5rem;
     --thumb-size: 1.5rem;
 
-    --track-background: linear-gradient(
+    --track-background-image: linear-gradient(
       90deg,
       var(--color-primary) 0,
       var(--color-primary) var(--value),
@@ -31,7 +30,7 @@
     cursor: pointer;
 
     &::-webkit-slider-runnable-track {
-      background-image: var(--track-background);
+      background-image: var(--track-background-image);
 
       block-size: var(--track-size);
 
@@ -39,7 +38,7 @@
     }
 
     &::-moz-range-track {
-      background-image: var(--track-background);
+      background-image: var(--track-background-image);
 
       block-size: var(--track-size);
 
