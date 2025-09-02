@@ -7,9 +7,14 @@ import {
 
 import { Link } from "react-router";
 
+import { toast } from "react-toastify";
+
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import RangeInputComponent from "@/components/range-input/range-input.component";
+import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
+import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
+import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
@@ -26,6 +31,12 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <ImageInputComponent />
+        <br />
+        <PasswordInputComponent />
+        <br />
+        <SearchInputComponent />
+        <br />
         <br />
         <RangeInputComponent
           type="range"
@@ -126,7 +137,7 @@ export default function HomePage(): ReactNode {
         <Link to="/hello">Call Hello API</Link>
         <br />
         <div>
-          <ButtonComponent>
+          <ButtonComponent onClick={() => toast("Wow so easy !")}>
             <IconComponent name="widget-linear" />
             Button
           </ButtonComponent>
