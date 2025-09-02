@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import IconComponent from "../icon/icon.component";
 import TypographyComponent from "../typography/typography.component";
@@ -14,7 +14,9 @@ type GreetingMessageProps = {
   message: string;
 };
 
-export default function GreetingsSectionComponent({ userName }: Props) {
+export default function GreetingsSectionComponent({
+  userName,
+}: Props): ReactNode {
   const calculateGreetingsMessage = (): GreetingMessageProps => {
     const time = new Date().getHours();
     if (time >= 5 && time < 11) {
