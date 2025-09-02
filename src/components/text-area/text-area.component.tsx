@@ -12,7 +12,7 @@ export default function TextAreaComponent({
 }: Props): ReactNode {
   return (
     <textarea
-      className={clsx(styles["text-area"], className)}
+      className={clsx(styles["text-area"], "s", className)}
       {...otherProps}
     ></textarea>
   );
