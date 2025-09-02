@@ -26,6 +26,13 @@ export default function HomePage(): ReactNode {
       <main>
         <TextAreaComponent />
         <br />
+        <TextAreaComponent
+          defaultLines={1}
+          minLines={1}
+          maxLines={3}
+          placeholder="Height can be from 1 to 3..."
+        />
+        <br />
         <ImageInputComponent />
         <br />
         <PasswordInputComponent />
