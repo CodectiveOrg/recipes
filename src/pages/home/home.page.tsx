@@ -10,6 +10,7 @@ import ImageInputComponent from "@/components/image-input/image-input.component.
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
 import RangeInputComponent from "@/components/range-input/range-input.component";
 import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
+import TextAreaComponent from "@/components/text-area/text-area.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
@@ -23,6 +24,15 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <TextAreaComponent />
+        <br />
+        <TextAreaComponent
+          defaultLines={1}
+          minLines={1}
+          maxLines={3}
+          placeholder="Height can be from 1 to 3..."
+        />
+        <br />
         <ImageInputComponent />
         <br />
         <PasswordInputComponent />
