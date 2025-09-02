@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
+import IngredientsSectionComponent from "@/components/ingredients-section/ingredients-section.component";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
 import RangeInputComponent from "@/components/range-input/range-input.component";
 import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
@@ -16,6 +17,13 @@ import TypographyComponent from "@/components/typography/typography.component.ts
 
 import styles from "./home.module.css";
 
+const ingredients = [
+  { title: "Tomatoes", quantity: "3" },
+  { title: "paprika", quantity: "1/2" },
+  { title: "potatoes", quantity: "2" },
+  { title: "onion", quantity: "1" },
+];
+
 export default function HomePage(): ReactNode {
   // const [defaultValue, setDefaultValue] = useState<number>(20);
   const [value, setValue] = useState<number>(20);
@@ -24,6 +32,9 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <br />
+        <IngredientsSectionComponent ingredients={ingredients} />
+        <br />
         <TextAreaComponent />
         <br />
         <TextAreaComponent
