@@ -13,9 +13,8 @@ import { toast } from "react-toastify";
 import clsx from "clsx";
 
 import IconButtonComponent from "@/components/icon-button/icon-button.component.tsx";
-
-import IconComponent from "../icon/icon.component";
-import TypographyComponent from "../typography/typography.component";
+import IconComponent from "@/components/icon/icon.component";
+import TypographyComponent from "@/components/typography/typography.component";
 
 import styles from "./image-input.module.css";
 
