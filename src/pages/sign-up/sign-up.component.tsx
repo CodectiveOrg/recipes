@@ -19,7 +19,7 @@ export default function SignUpPage(): ReactNode {
     e.preventDefault();
   };
 
-  const isPassed = () => false;
+  const isPassed = (): boolean => false;
 
   return (
     <div className={styles["sign-up"]}>

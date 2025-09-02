@@ -12,7 +12,7 @@ import styles from "./onboarding.module.css";
 export default function OnboardingPage(): ReactNode {
   const navigate = useNavigate();
 
-  const handleGetStartedButtonClick = () => {
+  const handleGetStartedButtonClick = (): void => {
     navigate("/login");
   };
 
