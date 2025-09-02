@@ -9,11 +9,11 @@
     object-fit: cover;
 
     margin: 0 auto 2rem;
-  }
 
-  img {
-    block-size: 100%;
-    inline-size: 100%;
+    img {
+      block-size: 100%;
+      inline-size: 100%;
+    }
   }
 
   .writings {
