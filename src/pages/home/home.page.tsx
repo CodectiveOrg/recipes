@@ -34,6 +34,9 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <br />
+        <RecipeCardComponent recipeCard={recipeCard} />
+        <br />
         <ImageInputComponent />
         <br />
         <PasswordInputComponent />
