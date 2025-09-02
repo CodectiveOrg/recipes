@@ -6,7 +6,7 @@ import styles from "./steps-section.module.css";
 
 type Step = {
   description: string;
-  image: string;
+  image?: string;
 };
 
 type Props = {
