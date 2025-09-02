@@ -43,6 +43,12 @@
     }
   }
 
+  &.search {
+    background-color: var(--color-form);
+
+    border-color: var(--color-form);
+  }
+
   &.success {
     --adornment-color: var(--color-primary);
     --border-color: var(--color-primary);

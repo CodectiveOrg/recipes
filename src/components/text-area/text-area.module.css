@@ -1,0 +1,56 @@
+.text-area {
+  --min-lines: 1;
+  --default-lines: 3;
+  --max-lines: 5;
+
+  --line-height: 1.5rem;
+  --border-width: 1px;
+  --padding: calc(1rem - var(--border-width));
+
+  --paddings-size: calc(2 * var(--border-width));
+  --borders-size: calc(2 * var(--padding));
+
+  --min-lines-size: calc(var(--min-lines) * var(--line-height));
+  --default-lines-size: calc(var(--default-lines) * var(--line-height));
+  --max-lines-size: calc(var(--max-lines) * var(--line-height));
+
+  --min-block-size: calc(
+    var(--min-lines-size) + var(--paddings-size) + var(--borders-size)
+  );
+  --block-size: calc(
+    var(--default-lines-size) + var(--paddings-size) + var(--borders-size)
+  );
+  --max-block-size: calc(
+    var(--max-lines-size) + var(--paddings-size) + var(--borders-size)
+  );
+
+  background-color: var(--color-white);
+  color: var(--color-text);
+
+  display: block;
+
+  min-block-size: var(--min-block-size);
+  block-size: var(--block-size);
+  max-block-size: var(--max-block-size);
+  inline-size: 100%;
+  resize: vertical;
+
+  padding: var(--padding);
+
+  border: var(--border-width) solid var(--color-outline);
+  border-radius: 0.5rem;
+
+  font-size: 0.9375rem;
+  font-weight: 500;
+
+  line-height: 1.5rem;
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &:focus {
+    outline: 1px solid var(--color-text);
+    outline-offset: -2px;
+  }
+}
