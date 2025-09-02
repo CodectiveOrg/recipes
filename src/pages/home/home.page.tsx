@@ -10,11 +10,36 @@ import ImageInputComponent from "@/components/image-input/image-input.component.
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
 import RangeInputComponent from "@/components/range-input/range-input.component";
 import SearchInputComponent from "@/components/search-input/search-input.component.tsx";
+import StepsSectionComponent from "@/components/steps-section/steps-section.component";
 import TextAreaComponent from "@/components/text-area/text-area.component.tsx";
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
 import styles from "./home.module.css";
+
+const steps = [
+  {
+    description:
+      "Your recipe has been uploaded, you can see it on your profile. Your recipe has been uploaded, you can see it on your profile.",
+    image: "/assets/cutting-onion.jpg",
+  },
+  {
+    description:
+      "Your recipe has been uploaded, you can see it on your profile. ",
+    image: "/assets/board.jpg",
+  },
+  {
+    description:
+      "Your recipe has been uploaded, you can see it on your profile. Your recipe has been uploaded, you can see it on your profile.",
+    image: "/assets/sliced-potato.jpg",
+  },
+  {
+    description:
+      "Your recipe has been uploaded, you can see it on your profile. ",
+    image: "",
+  },
+  { description: "Your recipe has been uploaded. ", image: "" },
+];
 
 export default function HomePage(): ReactNode {
   // const [defaultValue, setDefaultValue] = useState<number>(20);
@@ -24,6 +49,9 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <br />
+        <StepsSectionComponent steps={steps} />
+        <br />
         <TextAreaComponent />
         <br />
         <TextAreaComponent
