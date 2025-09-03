@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router";
 
 import AuthValidationComponent from "@/sections/auth/components/auth-validation/auth-validation.component.tsx";
+import { useAuthValidationHook } from "@/sections/auth/hooks/use-auth-validation.hook.ts";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
@@ -39,6 +40,8 @@ export default function AuthSection({
   onSubmit,
 }: Props): ReactNode {
   const [password, setPassword] = useState<string>("");
+
+  const rules = useAuthValidationHook(password);
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value;
@@ -73,8 +76,10 @@ export default function AuthSection({
             <IconComponent name="lock-keyhole-minimalistic-outline" />
           }
         />
-        {withValidation && <AuthValidationComponent password={password} />}
-        <ButtonComponent>{submitText}</ButtonComponent>
+        {withValidation && <AuthValidationComponent rules={rules} />}
+        <ButtonComponent disabled={rules.some((rule) => !rule.isValid)}>
+          {submitText}
+        </ButtonComponent>
       </form>
       <div className={styles.alternative}>
         <TypographyComponent p variant="p2">
