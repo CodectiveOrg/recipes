@@ -5,7 +5,7 @@ import clsx from "clsx";
 import IconComponent from "../icon/icon.component";
 import TypographyComponent from "../typography/typography.component";
 
-import styles from "./recipe-card.module.css";
+import styles from "./featured-recipe-card.module.css";
 
 type Props = ComponentProps<"div"> & {
   recipeCard: {
@@ -19,7 +19,7 @@ type Props = ComponentProps<"div"> & {
   };
 };
 
-export default function RecipeCardComponent({
+export default function FeaturedRecipeCardComponent({
   recipeCard,
   className,
 }: Props): ReactNode {
