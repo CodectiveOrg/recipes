@@ -1,22 +1,22 @@
 import type { ReactNode } from "react";
 
-import "swiper/css";
-import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import "@/styles/swiper.css";
 
 import styles from "./carousel.module.css";
 
 type Props = {
-  items: ReactNode[];
+  children: ReactNode[];
 };
 
-export default function CarouselComponent({ items }: Props): ReactNode {
+export default function CarouselComponent({ children }: Props): ReactNode {
   return (
     <div className={styles.carousel}>
-      <Swiper spaceBetween={5} slidesPerView={"auto"} modules={[Pagination]}>
-        {items.map((item, index) => (
-          <SwiperSlide key={index}>{item}</SwiperSlide>
+      <Swiper spaceBetween={16} slidesPerView={1.5} modules={[Pagination]}>
+        {children.map((child, index) => (
+          <SwiperSlide key={index}>{child}</SwiperSlide>
         ))}
       </Swiper>
     </div>
