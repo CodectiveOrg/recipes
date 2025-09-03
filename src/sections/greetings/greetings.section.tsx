@@ -1,9 +1,9 @@
 import type { ComponentProps, ReactNode } from "react";
 
-import IconComponent from "../icon/icon.component";
-import TypographyComponent from "../typography/typography.component";
+import IconComponent from "../../components/icon/icon.component.tsx";
+import TypographyComponent from "../../components/typography/typography.component.tsx";
 
-import styles from "./greetings-section.module.css";
+import styles from "./greetings.module.css";
 
 type Props = ComponentProps<"div"> & {
   userName: string;
@@ -14,9 +14,7 @@ type GreetingMessageProps = {
   message: string;
 };
 
-export default function GreetingsSectionComponent({
-  userName,
-}: Props): ReactNode {
+export default function GreetingsSection({ userName }: Props): ReactNode {
   const calculateGreetingsMessage = (): GreetingMessageProps => {
     const hours = new Date().getHours();
 

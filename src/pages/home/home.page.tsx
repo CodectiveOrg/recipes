@@ -4,9 +4,10 @@ import { Link } from "react-router";
 
 import { toast } from "react-toastify";
 
+import GreetingsSectionComponent from "@/sections/greetings-section/greetings-section.component.tsx";
+
 import ButtonComponent from "@/components/button/button.component.tsx";
 import FeaturedRecipeCardComponent from "@/components/featured-recipe-card/featured-recipe-card.component.tsx";
-import GreetingsSectionComponent from "@/components/greetings-section/greetings-section.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
