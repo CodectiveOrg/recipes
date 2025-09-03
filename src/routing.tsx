@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router";
 import GuestOnlyGuard from "@/guards/guest-only.guard.tsx";
 import SignedInOnlyGuard from "@/guards/signed-in-only.guard.tsx";
 
+import GuestLayout from "@/layouts/guest/guest.layout.tsx";
 import RootLayout from "@/layouts/root/root.layout.tsx";
 import SignedInLayout from "@/layouts/signed-in/signed-in.layout.tsx";
 
@@ -20,9 +21,11 @@ export default function Routing(): ReactNode {
     <Routes>
       <Route element={<RootLayout />}>
         <Route element={<GuestOnlyGuard />}>
-          <Route path="onboarding" element={<OnboardingPage />} />
-          <Route path="sign-in" element={<SignInPage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
+          <Route element={<GuestLayout />}>
+            <Route path="onboarding" element={<OnboardingPage />} />
+            <Route path="sign-in" element={<SignInPage />} />
+            <Route path="sign-up" element={<SignUpPage />} />
+          </Route>
         </Route>
         <Route element={<SignedInOnlyGuard />}>
           <Route element={<SignedInLayout />}>
