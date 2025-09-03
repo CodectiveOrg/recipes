@@ -11,8 +11,8 @@ import SignedInLayout from "@/layouts/signed-in/signed-in.layout.tsx";
 
 import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
 import OnboardingPage from "@/pages/onboarding/onboarding.page.tsx";
-import SignInPage from "@/pages/sign-in/sign-in.component.tsx";
-import SignUpPage from "@/pages/sign-up/sign-up.component.tsx";
+import SignInPage from "@/pages/sign-in/sign-in.page.tsx";
+import SignUpPage from "@/pages/sign-up/sign-up.page.tsx";
 
 import HomePage from "./pages/home/home.page.tsx";
 
