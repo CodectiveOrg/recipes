@@ -44,7 +44,7 @@ export default function HomePage(): ReactNode {
       <main>
         <GreetingsSection userName="James Spader" />
         <br />
-        <CarouselComponent>
+        <CarouselComponent slideBlockSize="10rem" slideInlineSize="17.5rem">
           <FeaturedRecipeCardComponent
             featured={{
               id: 1,

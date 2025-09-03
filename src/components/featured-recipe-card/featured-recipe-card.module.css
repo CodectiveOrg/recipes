@@ -5,9 +5,11 @@
   isolation: isolate;
 
   block-size: 100%;
-  aspect-ratio: 7 / 4;
+  inline-size: 100%;
 
   border-radius: 1rem;
+
+  user-select: none;
 
   &::before,
   > img {
