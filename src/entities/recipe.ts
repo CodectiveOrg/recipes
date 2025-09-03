@@ -1,6 +1,7 @@
 import { Ingredient } from "@/entities/ingredient";
 import { Step } from "@/entities/step";
 import { Tag } from "@/entities/tag";
+import type { EssentialUser } from "@/entities/user.ts";
 
 export class Recipe {
   public id!: number;
@@ -10,6 +11,7 @@ export class Recipe {
   public tags!: Tag[];
   public ingredients!: Ingredient[];
   public steps!: Step[];
+  public user!: EssentialUser;
   public createdAt!: Date;
   public updatedAt!: Date;
 }

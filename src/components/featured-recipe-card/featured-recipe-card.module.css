@@ -1,17 +1,17 @@
-.recipe-card {
+.featured-recipe-card {
   color: var(--color-white);
 
   position: relative;
 
   display: grid;
-  grid-template-rows: 2fr 1fr 1fr;
+  align-content: end;
 
-  block-size: 10.75rem;
-  inline-size: 16.5rem;
+  block-size: 100%;
+  aspect-ratio: 3 / 2;
 
   padding: 0.75rem;
 
-  .cover-img {
+  > img {
     position: absolute;
     z-index: -1;
 
@@ -24,8 +24,6 @@
 
   .title {
     grid-row-start: 2;
-
-    color: var(--color-white);
 
     inline-size: 12rem;
 
@@ -44,16 +42,14 @@
       justify-items: center;
       gap: 0.25rem;
 
-      img {
+      > img {
         block-size: 1.25rem;
         inline-size: 1.25rem;
 
         border-radius: 999rem;
       }
 
-      > span {
-        color: var(--color-white);
-
+      .username {
         padding-top: 0.25rem;
       }
     }
@@ -62,10 +58,6 @@
       display: flex;
       align-items: center;
       gap: 0.25rem;
-
-      > span {
-        color: var(--color-white);
-      }
     }
   }
 }

@@ -30,5 +30,13 @@
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "importOrderGroupNamespaceSpecifiers": true
+  "importOrderGroupNamespaceSpecifiers": true,
+  "overrides": [
+    {
+      "files": ["*.svg"],
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
 }

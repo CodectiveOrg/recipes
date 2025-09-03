@@ -1,62 +1,52 @@
 import type { ComponentProps, ReactNode } from "react";
 
+import { Link } from "react-router";
+
 import clsx from "clsx";
 
-import IconComponent from "../icon/icon.component";
-import TypographyComponent from "../typography/typography.component";
+import IconComponent from "@/components/icon/icon.component";
+import TypographyComponent from "@/components/typography/typography.component";
+
+import type { FeaturedRecipe } from "@/entities/featured-recipe.ts";
 
 import styles from "./featured-recipe-card.module.css";
 
-type Props = ComponentProps<"div"> & {
-  recipeCard: {
-    title: string;
-    coverImage: string;
-    recipeInfo: {
-      owner: string;
-      ownerProfile: string;
-      cookTime: string;
-    };
-  };
+type Props = Omit<ComponentProps<typeof Link>, "to"> & {
+  featured: FeaturedRecipe;
 };
 
 export default function FeaturedRecipeCardComponent({
-  recipeCard,
   className,
+  featured,
+  ...otherProps
 }: Props): ReactNode {
+  const { recipe } = featured;
+
   return (
-    <div className={clsx(styles["recipe-card"], className)}>
-      <img
-        src={recipeCard.coverImage}
-        alt={recipeCard.title}
-        className={styles["cover-img"]}
-      />
-
-      <TypographyComponent variant="h2" className={styles.title}>
-        {recipeCard.title}
+    <Link
+      className={clsx(styles["featured-recipe-card"], className)}
+      to={`/recipe/${recipe.id}`}
+      {...otherProps}
+    >
+      <img src={featured.picture || "/placeholders/featured.webp"} alt="" />
+      <TypographyComponent span className={styles.title} variant="h2">
+        {recipe.title}
       </TypographyComponent>
-
-      <div className={styles["recipe-info"]}>
-        <span className={styles.owner}>
-          <img
-            src={recipeCard.recipeInfo.ownerProfile}
-            alt="user-profile"
-            className="owner-profile"
-          />
-          <TypographyComponent
-            span
-            variant="s"
-            className={styles["owner-name"]}
-          >
-            {recipeCard.recipeInfo.owner}
-          </TypographyComponent>
-        </span>
-        <span className={styles["cook-time"]}>
-          <IconComponent name="clock-circle-bold" />
-          <TypographyComponent span variant="s">
-            {recipeCard.recipeInfo.cookTime}
-          </TypographyComponent>
-        </span>
-      </div>
-    </div>
+      <span className={styles.user}>
+        <img
+          src={recipe.user.picture || "/placeholders/user.svg"}
+          alt="User's Profile Picture"
+        />
+        <TypographyComponent span className={styles.username} variant="s">
+          {recipe.user.username}
+        </TypographyComponent>
+      </span>
+      <span className={styles.duration}>
+        <IconComponent name="alarm-linear" />
+        <TypographyComponent span variant="s">
+          {recipe.duration}
+        </TypographyComponent>
+      </span>
+    </Link>
   );
 }
