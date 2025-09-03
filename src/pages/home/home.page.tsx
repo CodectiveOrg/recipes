@@ -4,6 +4,8 @@ import { Link } from "react-router";
 
 import { toast } from "react-toastify";
 
+import GreetingsSection from "@/sections/greetings/greetings.section.tsx";
+
 import ButtonComponent from "@/components/button/button.component.tsx";
 import FeaturedRecipeCardComponent from "@/components/featured-recipe-card/featured-recipe-card.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
@@ -39,6 +41,7 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <GreetingsSection userName="James Spader" />
         <br />
         <div
           style={{
