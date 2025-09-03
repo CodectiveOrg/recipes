@@ -16,51 +16,49 @@ type SharedProps = {
 type ButtonProps = ComponentProps<"button"> & SharedProps;
 type LinkButtonProps = ComponentProps<typeof Link> & SharedProps;
 
-export default function ButtonComponent({
-  className,
-  variant,
-  color,
-  size,
-  children,
-  ...otherProps
-}: ButtonProps): ReactNode {
-  const classNames = useClassNames({ className, variant, color, size });
+export default function ButtonComponent(props: ButtonProps): ReactNode {
+  const { className, children, ...otherProps } = usePropsHook(props);
 
   return (
-    <button className={classNames} {...otherProps}>
+    <button className={className} {...otherProps}>
       {children}
     </button>
   );
 }
 
-export function LinkButtonComponent({
-  className,
-  variant,
-  color,
-  size,
-  children,
-  ...otherProps
-}: LinkButtonProps): ReactNode {
-  const classNames = useClassNames({ className, variant, color, size });
+export function LinkButtonComponent(props: LinkButtonProps): ReactNode {
+  const { className, children, ...otherProps } = usePropsHook(props);
 
   return (
-    <Link className={classNames} {...otherProps}>
+    <Link className={className} {...otherProps}>
       {children}
     </Link>
   );
 }
 
-function useClassNames({
+type UnionProps = ComponentProps<"button"> | ComponentProps<typeof Link>;
+
+type HookResult<T extends UnionProps> = Omit<
+  T & SharedProps,
+  "className" | "color" | "variant" | "size"
+> & {
+  className: string;
+};
+
+function usePropsHook<T extends UnionProps>({
   className,
   variant = "solid",
   color = "primary",
   size = "large",
-}: SharedProps): string {
-  return clsx(
+  ...otherProps
+}: T & SharedProps): HookResult<T> {
+  const classNames = clsx(
     styles.button,
     styles[variant],
     styles[size],
     styles[color],
     className,
   );
+
+  return { className: classNames, ...otherProps };
 }
