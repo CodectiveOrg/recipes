@@ -11,4 +11,5 @@
   --color-danger: hsl(0deg 100% 70%); /* #ff6464 */
 
   --color-backdrop: hsl(0deg 0% 0% / 60%);
+  --color-overlay: hsl(0deg 0% 0% / 60%);
 }
