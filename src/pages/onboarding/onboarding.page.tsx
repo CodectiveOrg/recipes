@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { Link } from "react-router";
 
+import ButtonComponent from "@/components/button/button.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component";
 
 import styles from "./onboarding.module.css";
@@ -17,7 +18,9 @@ export default function OnboardingPage(): ReactNode {
             Let's join our community to cook better food!
           </TypographyComponent>
         </div>
-        <Link to="/sign-in">Get Started</Link>
+        <ButtonComponent as={Link} to="/sign-in">
+          Get Started
+        </ButtonComponent>
       </main>
     </div>
   );

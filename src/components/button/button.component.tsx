@@ -1,64 +1,44 @@
-import { type ComponentProps, type ReactNode } from "react";
-
-import { Link } from "react-router";
+import { type ComponentProps, type ElementType, type ReactNode } from "react";
 
 import clsx from "clsx";
 
 import styles from "./button.module.css";
 
-type SharedProps = {
+type Combine<T, K> = Omit<T, keyof K> & K;
+
+type Props<T extends ElementType> = {
+  as?: T;
   className?: string;
   variant?: "solid" | "outlined" | "text";
   color?: "primary" | "secondary" | "danger";
   size?: "large" | "medium" | "small";
 };
 
-type ButtonProps = ComponentProps<"button"> & SharedProps;
-type LinkButtonProps = ComponentProps<typeof Link> & SharedProps;
+type CombinedProps<T extends ElementType> = Combine<
+  ComponentProps<T>,
+  Props<T>
+>;
 
-export default function ButtonComponent(props: ButtonProps): ReactNode {
-  const { className, children, ...otherProps } = usePropsHook(props);
-
-  return (
-    <button className={className} {...otherProps}>
-      {children}
-    </button>
-  );
-}
-
-export function LinkButtonComponent(props: LinkButtonProps): ReactNode {
-  const { className, children, ...otherProps } = usePropsHook(props);
-
-  return (
-    <Link className={className} {...otherProps}>
-      {children}
-    </Link>
-  );
-}
-
-type UnionProps = ComponentProps<"button"> | ComponentProps<typeof Link>;
-
-type HookResult<T extends UnionProps> = Omit<
-  T & SharedProps,
-  "className" | "color" | "variant" | "size"
-> & {
-  className: string;
-};
-
-function usePropsHook<T extends UnionProps>({
-  className,
+export default function ButtonComponent<T extends ElementType = "button">({
+  as,
   variant = "solid",
   color = "primary",
   size = "large",
+  className,
   ...otherProps
-}: T & SharedProps): HookResult<T> {
-  const classNames = clsx(
-    styles.button,
-    styles[variant],
-    styles[size],
-    styles[color],
-    className,
-  );
+}: CombinedProps<T>): ReactNode {
+  const Component = as ?? "button";
 
-  return { className: classNames, ...otherProps };
+  return (
+    <Component
+      className={clsx(
+        styles.button,
+        styles[variant],
+        styles[size],
+        styles[color],
+        className,
+      )}
+      {...otherProps}
+    />
+  );
 }
