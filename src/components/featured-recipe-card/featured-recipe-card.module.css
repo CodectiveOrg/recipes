@@ -2,20 +2,43 @@
   color: var(--color-white);
 
   position: relative;
+  isolation: isolate;
 
   block-size: 100%;
   aspect-ratio: 7 / 4;
 
+  border-radius: 1rem;
+
+  &::before,
   > img {
+    border-radius: inherit;
+  }
+
+  &::before {
+    content: "";
+
+    background-image: linear-gradient(
+      0deg,
+      var(--color-overlay),
+      transparent 70%
+    );
+
     position: absolute;
     inset: 0;
     z-index: -1;
 
     block-size: 100%;
     inline-size: 100%;
-    object-fit: cover;
+  }
 
-    border-radius: 1rem;
+  > img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
   }
 
   .writings {
