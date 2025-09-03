@@ -1,8 +1,10 @@
 import { type FormEvent, type ReactNode } from "react";
 
+import { Link } from "react-router";
+
 import clsx from "clsx";
 
-import ButtonComponent from "@/components/button/button.component";
+import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component";
 import PasswordInputComponent from "@/components/password-input/password-input.component";
 import TextInputComponent from "@/components/text-input/text-input.component";
@@ -13,7 +15,7 @@ import styles from "./sign-up.module.css";
 const RULES = ["Atleast 6 characters", "Contains a number"];
 
 export default function SignUpPage(): ReactNode {
-  const formSubmitHandler = async (
+  const handleFormSubmit = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
@@ -23,25 +25,20 @@ export default function SignUpPage(): ReactNode {
 
   return (
     <div className={styles["sign-up"]}>
-      <header></header>
       <main>
         <div className={styles.writings}>
-          <TypographyComponent variant="h1" color="text">
-            Welcome!
-          </TypographyComponent>
+          <TypographyComponent variant="h1">Welcome!</TypographyComponent>
           <TypographyComponent p variant="p2" color="text-secondary">
             Please enter your account here
           </TypographyComponent>
         </div>
-        <form onSubmit={formSubmitHandler}>
+        <form onSubmit={handleFormSubmit}>
           <TextInputComponent
-            placeholder="Email or phone number"
-            id="email"
-            startAdornment={<IconComponent name="letter-linear" color="text" />}
+            placeholder="Username"
+            startAdornment={<IconComponent name="user-linear" color="text" />}
           />
           <PasswordInputComponent
             placeholder="Password"
-            id="password"
             startAdornment={
               <IconComponent name="lock-keyhole-minimalistic-outline" />
             }
@@ -50,7 +47,6 @@ export default function SignUpPage(): ReactNode {
             <TypographyComponent p variant="p1">
               Your Password must contain:
             </TypographyComponent>
-
             {RULES.map((rule, index) => (
               <div
                 key={index}
@@ -65,6 +61,14 @@ export default function SignUpPage(): ReactNode {
           </div>
           <ButtonComponent>Sign Up</ButtonComponent>
         </form>
+        <div className={styles.alternative}>
+          <TypographyComponent p variant="p2">
+            Already signed up?
+          </TypographyComponent>
+          <Link className="h3" to="/sign-in">
+            Sign In
+          </Link>
+        </div>
       </main>
     </div>
   );

@@ -1,4 +1,9 @@
 .sign-up {
+  display: grid;
+  align-content: center;
+
+  min-block-size: 100dvh;
+
   padding-inline: 1.5rem;
 
   main {
@@ -6,15 +11,18 @@
       display: grid;
       justify-items: center;
       gap: 0.5rem;
-
-      margin-block: 0.68rem 2rem;
     }
 
     form {
-      label {
-        &:nth-child(2) {
-          margin-block: 1rem 1.5rem;
-        }
+      display: grid;
+      gap: 1rem;
+
+      margin-block: 2rem;
+
+      > button {
+        inline-size: 100%;
+
+        margin-block-start: 3.5rem;
       }
 
       .rules {
@@ -43,11 +51,16 @@
           }
         }
       }
+    }
 
-      button {
-        inline-size: 100%;
+    .alternative {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
 
-        margin-block-start: 1.43rem;
+      a {
+        color: var(--color-primary);
       }
     }
   }

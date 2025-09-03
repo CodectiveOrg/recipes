@@ -21,17 +21,15 @@ export default function SignInPage(): ReactNode {
     <div className={styles["sign-in"]}>
       <main>
         <div className={styles.writings}>
-          <TypographyComponent variant="h1" color="text">
-            Welcome Back!
-          </TypographyComponent>
+          <TypographyComponent variant="h1">Welcome Back!</TypographyComponent>
           <TypographyComponent p variant="p2" color="text-secondary">
             Please enter your account here
           </TypographyComponent>
         </div>
         <form onSubmit={handleFormSubmit}>
           <TextInputComponent
-            placeholder="Email or phone number"
-            startAdornment={<IconComponent name="letter-linear" color="text" />}
+            placeholder="Username"
+            startAdornment={<IconComponent name="user-linear" color="text" />}
           />
           <PasswordInputComponent
             placeholder="Password"
