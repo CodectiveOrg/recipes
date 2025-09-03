@@ -17,6 +17,8 @@ import PasswordInputComponent from "@/components/password-input/password-input.c
 import TextInputComponent from "@/components/text-input/text-input.component.tsx";
 import TypographyComponent from "@/components/typography/typography.component.tsx";
 
+import type { AuthRequestDto } from "@/dto/request/auth.request.dto.ts";
+
 import styles from "./auth.module.css";
 
 type Alternative = {
@@ -31,7 +33,7 @@ type Props = {
   passwordAutoComplete: HTMLInputAutoCompleteAttribute;
   submitText: string;
   alternative: Alternative;
-  onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
+  onSubmit?: (dto: AuthRequestDto) => void;
 };
 
 export default function AuthSection({
@@ -55,7 +57,15 @@ export default function AuthSection({
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
-    onSubmit?.(e);
+
+    const formData = new FormData(e.currentTarget);
+
+    const dto = {
+      username: formData.get("username") as string,
+      password: formData.get("password") as string,
+    };
+
+    onSubmit?.(dto);
   };
 
   return (
@@ -68,10 +78,12 @@ export default function AuthSection({
       </div>
       <form onSubmit={handleFormSubmit}>
         <TextInputComponent
+          name="username"
           placeholder="Username"
           startAdornment={<IconComponent name="user-linear" color="text" />}
         />
         <PasswordInputComponent
+          name="password"
           placeholder="Password"
           autoComplete={passwordAutoComplete}
           value={password}
