@@ -29,23 +29,25 @@ export default function FeaturedRecipeCardComponent({
       {...otherProps}
     >
       <img src={featured.picture || "/placeholders/featured.webp"} alt="" />
-      <TypographyComponent span className={styles.title} variant="h2">
-        {recipe.title}
-      </TypographyComponent>
-      <span className={styles.user}>
-        <img
-          src={recipe.user.picture || "/placeholders/user.svg"}
-          alt="User's Profile Picture"
-        />
-        <TypographyComponent span className={styles.username} variant="s">
-          {recipe.user.username}
+      <span className={styles.writings}>
+        <TypographyComponent span className={styles.title} variant="h2">
+          {recipe.title}
         </TypographyComponent>
-      </span>
-      <span className={styles.duration}>
-        <IconComponent name="alarm-linear" />
-        <TypographyComponent span variant="s">
-          {recipe.duration}
-        </TypographyComponent>
+        <span className={styles.user}>
+          <img
+            src={recipe.user.picture || "/placeholders/user.svg"}
+            alt="User's Profile Picture"
+          />
+          <TypographyComponent span className={styles.username} variant="s">
+            {recipe.user.username}
+          </TypographyComponent>
+        </span>
+        <span className={styles.duration}>
+          <IconComponent name="alarm-linear" />
+          <TypographyComponent span variant="s">
+            {recipe.duration}
+          </TypographyComponent>
+        </span>
       </span>
     </Link>
   );
