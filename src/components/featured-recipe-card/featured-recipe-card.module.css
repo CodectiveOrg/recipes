@@ -44,7 +44,7 @@
   .writings {
     display: grid;
     grid-template-areas: "title title" "user duration";
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-content: end;
     gap: 0.5rem;
 
@@ -64,6 +64,7 @@
       grid-area: user;
 
       display: flex;
+      align-items: center;
       gap: 0.5rem;
 
       > img {
@@ -71,10 +72,6 @@
         inline-size: 1.25rem;
 
         border-radius: 999rem;
-      }
-
-      .username {
-        padding-top: 0.25rem;
       }
     }
 

@@ -32,7 +32,12 @@ export default function FeaturedRecipeCardComponent({
     >
       <img src={featured.picture || "/placeholders/featured.webp"} alt="" />
       <span className={styles.writings}>
-        <TypographyComponent span className={styles.title} variant="h2">
+        <TypographyComponent
+          span
+          className={styles.title}
+          variant="h2"
+          maxLines={2}
+        >
           {recipe.title}
         </TypographyComponent>
         <span className={styles.user}>
@@ -40,7 +45,12 @@ export default function FeaturedRecipeCardComponent({
             src={recipe.user.picture || "/placeholders/user.svg"}
             alt="User's Profile Picture"
           />
-          <TypographyComponent span className={styles.username} variant="s">
+          <TypographyComponent
+            span
+            ellipsis
+            className={styles.username}
+            variant="s"
+          >
             {recipe.user.username}
           </TypographyComponent>
         </span>
