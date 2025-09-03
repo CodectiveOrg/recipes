@@ -1,4 +1,9 @@
 .sign-in {
+  display: grid;
+  align-content: center;
+
+  min-block-size: 100dvh;
+
   padding-inline: 1.5rem;
 
   main {
@@ -6,30 +11,30 @@
       display: grid;
       justify-items: center;
       gap: 0.5rem;
-
-      margin-block: 6.68rem 2rem;
     }
 
     form {
-      label {
-        &:nth-child(2) {
-          margin-block: 1rem 7.56rem;
-        }
-      }
+      display: grid;
+      gap: 1rem;
 
-      button {
+      margin-block: 2rem;
+
+      > button {
         inline-size: 100%;
+
+        margin-block-start: 3.5rem;
       }
     }
 
-    .text {
+    .alternative {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
 
-      inline-size: calc(100% - (3.75rem * 2));
-
-      margin: 2rem auto 0;
+      a {
+        color: var(--color-primary);
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ import TypographyComponent from "@/components/typography/typography.component";
 import styles from "./sign-in.module.css";
 
 export default function SignInPage(): ReactNode {
-  const formSubmitHandler = async (
+  const handleFormSubmit = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
@@ -19,7 +19,6 @@ export default function SignInPage(): ReactNode {
 
   return (
     <div className={styles["sign-in"]}>
-      <header></header>
       <main>
         <div className={styles.writings}>
           <TypographyComponent variant="h1" color="text">
@@ -29,7 +28,7 @@ export default function SignInPage(): ReactNode {
             Please enter your account here
           </TypographyComponent>
         </div>
-        <form onSubmit={formSubmitHandler}>
+        <form onSubmit={handleFormSubmit}>
           <TextInputComponent
             placeholder="Email or phone number"
             startAdornment={<IconComponent name="letter-linear" color="text" />}
@@ -42,12 +41,12 @@ export default function SignInPage(): ReactNode {
           />
           <ButtonComponent>Sign In</ButtonComponent>
         </form>
-        <div className={styles.text}>
+        <div className={styles.alternative}>
           <TypographyComponent p variant="p2">
-            Don’t have any account?
+            Don't have any account?
           </TypographyComponent>
-          <Link to="/sign-up">
-            <TypographyComponent variant="h3">Sign Up</TypographyComponent>
+          <Link className="h3" to="/sign-up">
+            Sign Up
           </Link>
         </div>
       </main>
