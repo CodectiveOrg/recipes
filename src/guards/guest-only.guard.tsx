@@ -1,15 +1,13 @@
 import type { ReactNode } from "react";
 
-import { Navigate, Outlet, useLocation } from "react-router";
+import { Navigate, Outlet } from "react-router";
 
 import useVerifyQuery from "@/queries/use-verify.query.ts";
 
 export default function GuestOnlyGuard(): ReactNode {
-  const { isLoading, isError } = useVerifyQuery();
+  const { isPending, isError } = useVerifyQuery();
 
-  const location = useLocation();
-
-  if (isLoading) {
+  if (isPending) {
     return <div>Loading...</div>;
   }
 
@@ -17,5 +15,5 @@ export default function GuestOnlyGuard(): ReactNode {
     return <Outlet />;
   }
 
-  return <Navigate to="/" state={{ from: location }} replace />;
+  return <Navigate to="/" replace />;
 }

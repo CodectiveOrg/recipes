@@ -8,7 +8,6 @@ import LoggedInOnlyGuard from "@/guards/logged-in-only.guard.tsx";
 import LoggedInLayout from "@/layouts/logged-in/logged-in.layout.tsx";
 import RootLayout from "@/layouts/root/root.layout.tsx";
 
-import HelloPage from "@/pages/hello/hello.page.tsx";
 import NotFoundPage from "@/pages/not-found/not-found.page.tsx";
 import OnboardingPage from "@/pages/onboarding/onboarding.page.tsx";
 import SignInPage from "@/pages/sign-in/sign-in.component.tsx";
@@ -21,16 +20,15 @@ export default function Routing(): ReactNode {
     <Routes>
       <Route element={<RootLayout />}>
         <Route element={<GuestOnlyGuard />}>
-          <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="onboarding" element={<OnboardingPage />} />
+          <Route path="sign-in" element={<SignInPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
         </Route>
-        <Route element={<LoggedInLayout />}>
-          <Route element={<LoggedInOnlyGuard />}>
-            <Route path="hello" element={<HelloPage />} />
+        <Route element={<LoggedInOnlyGuard />}>
+          <Route element={<LoggedInLayout />}>
+            <Route index element={<HomePage />} />
           </Route>
-          <Route index element={<HomePage />} />
         </Route>
-        <Route path="onboarding" element={<OnboardingPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
