@@ -17,6 +17,7 @@ export default function SignUpPage(): ReactNode {
         <AuthSection
           withValidation
           heading="Welcome!"
+          passwordAutoComplete="new-password"
           submitText="Sign Up"
           alternative={{
             text: "Already have an account?",

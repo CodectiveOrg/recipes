@@ -1,6 +1,7 @@
 import {
   type ChangeEvent,
   type FormEvent,
+  type HTMLInputAutoCompleteAttribute,
   type ReactNode,
   useState,
 } from "react";
@@ -27,6 +28,7 @@ type Alternative = {
 type Props = {
   withValidation?: boolean;
   heading: string;
+  passwordAutoComplete: HTMLInputAutoCompleteAttribute;
   submitText: string;
   alternative: Alternative;
   onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
@@ -35,6 +37,7 @@ type Props = {
 export default function AuthSection({
   withValidation = false,
   heading,
+  passwordAutoComplete,
   submitText,
   alternative,
   onSubmit,
@@ -70,6 +73,7 @@ export default function AuthSection({
         />
         <PasswordInputComponent
           placeholder="Password"
+          autoComplete={passwordAutoComplete}
           value={password}
           onChange={handlePasswordChange}
           startAdornment={
@@ -77,7 +81,9 @@ export default function AuthSection({
           }
         />
         {withValidation && <AuthValidationComponent rules={rules} />}
-        <ButtonComponent disabled={rules.some((rule) => !rule.isValid)}>
+        <ButtonComponent
+          disabled={withValidation && rules.some((rule) => !rule.isValid)}
+        >
           {submitText}
         </ButtonComponent>
       </form>

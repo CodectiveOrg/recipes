@@ -16,6 +16,7 @@ export default function SignInPage(): ReactNode {
       <main>
         <AuthSection
           heading="Welcome Back!"
+          passwordAutoComplete="current-password"
           submitText="Sign In"
           alternative={{
             text: "Don't have any account?",
