@@ -5,6 +5,6 @@
   border-radius: 1.5rem;
 
   &::backdrop {
-    background-color: color-mix(in hsl, var(--color-black), transparent 60%);
+    background-color: var(--color-backdrop);
   }
 }
