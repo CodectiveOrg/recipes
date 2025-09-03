@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import GreetingsSection from "@/sections/greetings/greetings.section.tsx";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
+import CarouselComponent from "@/components/carousel/carousel.component.tsx";
 import FeaturedRecipeCardComponent from "@/components/featured-recipe-card/featured-recipe-card.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
@@ -43,14 +44,7 @@ export default function HomePage(): ReactNode {
       <main>
         <GreetingsSection userName="James Spader" />
         <br />
-        <div
-          style={{
-            overflow: "auto",
-            display: "flex",
-            gap: "1rem",
-            blockSize: "10rem",
-          }}
-        >
+        <CarouselComponent slideBlockSize="10rem" slideInlineSize="17.5rem">
           <FeaturedRecipeCardComponent
             featured={{
               id: 1,
@@ -78,7 +72,7 @@ export default function HomePage(): ReactNode {
               updatedAt: new Date(),
             }}
           />
-        </div>
+        </CarouselComponent>
         <br />
         <ImageInputComponent />
         <br />
