@@ -13,7 +13,7 @@ export default function OnboardingPage(): ReactNode {
   const navigate = useNavigate();
 
   const handleGetStartedButtonClick = (): void => {
-    navigate("/login");
+    navigate("/sign-in");
   };
 
   return (

@@ -40,7 +40,7 @@ export default function SignInPage(): ReactNode {
               <IconComponent name="lock-keyhole-minimalistic-outline" />
             }
           />
-          <ButtonComponent>Login</ButtonComponent>
+          <ButtonComponent>Sign In</ButtonComponent>
         </form>
         <div className={styles.text}>
           <TypographyComponent p variant="p2">
