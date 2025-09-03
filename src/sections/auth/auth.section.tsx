@@ -1,8 +1,15 @@
-import type { FormEvent, ReactNode } from "react";
+import {
+  type ChangeEvent,
+  type FormEvent,
+  type ReactNode,
+  useState,
+} from "react";
 
 import { Link } from "react-router";
 
 import clsx from "clsx";
+
+import CheckIcon from "@/icons/check.icon.tsx";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
@@ -12,7 +19,21 @@ import TypographyComponent from "@/components/typography/typography.component.ts
 
 import styles from "./auth.module.css";
 
-const RULES = ["Atleast 6 characters", "Contains a number"];
+type Rule = {
+  title: string;
+  isValid: (value: string) => boolean;
+};
+
+const rules: Rule[] = [
+  {
+    title: "At least 4 characters",
+    isValid: (value: string) => value.length >= 4,
+  },
+  {
+    title: "Contains a number",
+    isValid: (value: string) => /[0-9]/.test(value),
+  },
+];
 
 type Alternative = {
   text: string;
@@ -35,14 +56,19 @@ export default function AuthSection({
   alternative,
   onSubmit,
 }: Props): ReactNode {
+  const [password, setPassword] = useState<string>("");
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const value = e.target.value;
+    setPassword(value);
+  };
+
   const handleFormSubmit = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
     onSubmit?.(e);
   };
-
-  const isPassed = (): boolean => false;
 
   return (
     <div className={styles.auth}>
@@ -59,26 +85,35 @@ export default function AuthSection({
         />
         <PasswordInputComponent
           placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
           startAdornment={
             <IconComponent name="lock-keyhole-minimalistic-outline" />
           }
         />
         {withValidation && (
-          <div className={styles.rules}>
+          <div className={styles.validation}>
             <TypographyComponent p variant="p1">
               Your Password must contain:
             </TypographyComponent>
-            {RULES.map((rule, index) => (
-              <div
-                key={index}
-                className={clsx(styles.rule, isPassed() ? "passed" : "")}
-              >
-                <IconComponent name="check-circle-bold"></IconComponent>
-                <TypographyComponent p variant="p2">
-                  {rule}
-                </TypographyComponent>
-              </div>
-            ))}
+            <ul className={styles.rules}>
+              {rules.map((rule, index) => (
+                <li
+                  key={index}
+                  className={clsx(
+                    styles.rule,
+                    rule.isValid(password) && styles.valid,
+                  )}
+                >
+                  <span className={styles.circle}>
+                    <CheckIcon />
+                  </span>
+                  <TypographyComponent p variant="p2">
+                    {rule.title}
+                  </TypographyComponent>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         <ButtonComponent>{submitText}</ButtonComponent>
