@@ -41,7 +41,6 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
-        <br />
         <GreetingsSection userName="James Spader" />
         <br />
         <div

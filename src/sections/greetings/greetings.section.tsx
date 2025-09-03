@@ -16,11 +16,11 @@ export default function GreetingsSection({ userName }: Props): ReactNode {
 
   return (
     <div className={styles["greetings-section"]}>
-      <span>
-        <IconComponent name={icon} />
-        <TypographyComponent variant="s">{message}</TypographyComponent>
-      </span>
-      <TypographyComponent variant="h3">{userName}</TypographyComponent>
+      <IconComponent name={icon} />
+      <TypographyComponent variant="s">{message}</TypographyComponent>
+      <TypographyComponent className={styles.username} variant="h2">
+        {userName}
+      </TypographyComponent>
     </div>
   );
 }

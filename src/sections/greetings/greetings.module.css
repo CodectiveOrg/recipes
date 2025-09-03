@@ -1,13 +1,14 @@
 .greetings-section {
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 0.25rem;
 
-    svg {
-      color: var(--color-primary);
+  svg {
+    font-size: 1rem;
+  }
 
-      font-size: larger;
-    }
+  .username {
+    grid-column: 1 / -1;
   }
 }
