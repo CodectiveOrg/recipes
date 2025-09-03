@@ -18,23 +18,29 @@ export default function GreetingsSectionComponent({
   userName,
 }: Props): ReactNode {
   const calculateGreetingsMessage = (): GreetingMessageProps => {
-    const time = new Date().getHours();
-    if (time >= 5 && time < 11) {
-      return { icon: "sun-fog-linear", message: "Good Morning" };
-    }
-    if (time >= 12 && time < 16) {
-      return { icon: "sun-2-linear", message: "Good Afternoon" };
-    }
-    if (time >= 17 && time < 20) {
-      return { icon: "cloud-sun-2-linear", message: "Good evening" };
-    }
-    if (time >= 21 || time < 5) {
+    const hours = new Date().getHours();
+
+    if (hours < 4) {
       return { icon: "moon-linear", message: "Good night" };
     }
 
-    return { icon: "", message: "" };
+    if (hours < 11) {
+      return { icon: "sun-fog-linear", message: "Good Morning" };
+    }
+
+    if (hours < 16) {
+      return { icon: "sun-2-linear", message: "Good Afternoon" };
+    }
+
+    if (hours < 20) {
+      return { icon: "cloud-sun-2-linear", message: "Good evening" };
+    }
+
+    return { icon: "moon-linear", message: "Good night" };
   };
+
   const greeting = calculateGreetingsMessage();
+
   return (
     <div className={styles["greetings-section"]}>
       <span>

@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 import ButtonComponent from "@/components/button/button.component.tsx";
 import FeaturedRecipeCardComponent from "@/components/featured-recipe-card/featured-recipe-card.component.tsx";
+import GreetingsSectionComponent from "@/components/greetings-section/greetings-section.component.tsx";
 import IconComponent from "@/components/icon/icon.component.tsx";
 import ImageInputComponent from "@/components/image-input/image-input.component.tsx";
 import PasswordInputComponent from "@/components/password-input/password-input.component.tsx";
@@ -39,6 +40,8 @@ export default function HomePage(): ReactNode {
     <div className={styles.home}>
       <header>Header</header>
       <main>
+        <br />
+        <GreetingsSectionComponent userName="bijan" />
         <br />
         <div
           style={{
