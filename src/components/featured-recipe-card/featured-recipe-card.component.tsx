@@ -9,6 +9,8 @@ import TypographyComponent from "@/components/typography/typography.component";
 
 import type { FeaturedRecipe } from "@/entities/featured-recipe.ts";
 
+import { formatDuration } from "@/utils/format.utils.ts";
+
 import styles from "./featured-recipe-card.module.css";
 
 type Props = Omit<ComponentProps<typeof Link>, "to"> & {
@@ -45,7 +47,7 @@ export default function FeaturedRecipeCardComponent({
         <span className={styles.duration}>
           <IconComponent name="alarm-linear" />
           <TypographyComponent span variant="s">
-            {recipe.duration}
+            {formatDuration(recipe.duration)}
           </TypographyComponent>
         </span>
       </span>
