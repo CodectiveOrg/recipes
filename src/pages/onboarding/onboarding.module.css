@@ -28,9 +28,10 @@
     }
 
     a {
-      max-inline-size: 20rem;
+      inline-size: min(20rem, 100%);
 
       margin-block-end: 4.5rem;
+      margin-inline: auto;
     }
   }
 }
