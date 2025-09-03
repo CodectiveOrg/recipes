@@ -1,10 +1,13 @@
 .onboarding {
   main {
     display: grid;
-    grid-template-rows: auto 1fr;
+    align-content: start;
+
+    block-size: 100dvh;
 
     img {
       block-size: 100%;
+      max-block-size: 25rem;
       inline-size: 100%;
       object-fit: cover;
     }
@@ -17,16 +20,17 @@
       margin-block: 3rem 4.5rem;
       padding-inline: 1.5rem;
 
-      p {
-        max-inline-size: 13.06rem;
+      text-align: center;
 
-        text-align: center;
+      p {
+        max-inline-size: 24ch;
       }
     }
 
-    button {
+    a {
+      max-inline-size: 20rem;
+
       margin-block-end: 4.5rem;
-      margin-inline: 1.5rem;
     }
   }
 }
