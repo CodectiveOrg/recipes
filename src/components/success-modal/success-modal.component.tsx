@@ -2,9 +2,9 @@ import type { ComponentProps, ReactNode } from "react";
 
 import { Link } from "react-router";
 
+import ButtonComponent from "@/components/button/button.component";
 import ModalComponent from "@/components/modal/modal.component";
 import TypographyComponent from "@/components/typography/typography.component";
-import ButtonComponent from "@/components/button/button.component";
 
 import styles from "./success-modal.module.css";
 
