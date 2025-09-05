@@ -1,0 +1,10 @@
+.modal {
+  margin: auto;
+
+  border: none;
+  border-radius: 1.5rem;
+
+  &::backdrop {
+    background-color: var(--color-backdrop);
+  }
+}
