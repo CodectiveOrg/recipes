@@ -10,14 +10,18 @@ import styles from "./success-modal.module.css";
 type Props = ComponentProps<typeof ModalComponent> & {
   image?: string;
   title: string;
-  text?: string;
+  hint?: string;
+  href?: string;
+  linkText?: string;
   onAccept?: () => void;
 };
 
 export default function SuccessModalComponent({
   image,
   title,
-  text,
+  hint,
+  href = "/home",
+  linkText = "Back To Home",
   onAccept,
   ...otherProps
 }: Props): ReactNode {
@@ -29,16 +33,16 @@ export default function SuccessModalComponent({
         </div>
         <div className={styles.writings}>
           <TypographyComponent variant="h1">{title}</TypographyComponent>
-          {text && (
+          {hint && (
             <TypographyComponent p variant="p2">
-              {text}
+              {hint}
             </TypographyComponent>
           )}
         </div>
 
-        <Link to="/home" onClick={onAccept}>
+        <Link to={href} onClick={onAccept}>
           <TypographyComponent span variant="h3">
-            Go to Home
+            {linkText}
           </TypographyComponent>
         </Link>
       </div>
