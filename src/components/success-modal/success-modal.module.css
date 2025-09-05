@@ -27,19 +27,4 @@
       max-inline-size: 16rem;
     }
   }
-
-  a {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-
-    display: inline-block;
-
-    inline-size: 100%;
-
-    padding-block: 1.1875rem;
-
-    border-radius: 999rem;
-
-    text-align: center;
-  }
 }

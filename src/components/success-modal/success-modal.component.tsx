@@ -4,6 +4,7 @@ import { Link } from "react-router";
 
 import ModalComponent from "@/components/modal/modal.component";
 import TypographyComponent from "@/components/typography/typography.component";
+import ButtonComponent from "@/components/button/button.component";
 
 import styles from "./success-modal.module.css";
 
@@ -40,11 +41,11 @@ export default function SuccessModalComponent({
           )}
         </div>
 
-        <Link to={href} onClick={onAccept}>
+        <ButtonComponent as={Link} to={href} onClick={onAccept}>
           <TypographyComponent span variant="h3">
             {linkText}
           </TypographyComponent>
-        </Link>
+        </ButtonComponent>
       </div>
     </ModalComponent>
   );
