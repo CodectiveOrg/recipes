@@ -1,0 +1,30 @@
+.success-modal {
+  background-color: var(--color-white);
+
+  padding: 3rem 1rem;
+
+  .image-wrapper {
+    block-size: 10rem;
+    inline-size: 10rem;
+    object-fit: cover;
+
+    margin: 0 auto 2rem;
+
+    img {
+      block-size: 100%;
+      inline-size: 100%;
+    }
+  }
+
+  .writings {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+
+    margin-block-end: 1.5rem;
+
+    p {
+      max-inline-size: 16rem;
+    }
+  }
+}
